@@ -7,7 +7,9 @@ All copy for `sprint-landing.html` in one place for easy editing.
 ## Navigation
 
 - **Logo Text:** 10-Day Sprint
-- **CTA Button:** Get Started
+- **Buttons:**
+  - Ask a question (mailto:olgamzhurova@gmail.com)
+  - Get Started
 
 ---
 
@@ -22,11 +24,9 @@ All copy for `sprint-landing.html` in one place for easy editing.
 **Subheadline:**
 > From idea to live business in 10 working days. Join a community of builders doing it together—with AI on your side.
 
-**Primary CTA:** Join the Sprint - $99
-
-**Secondary Options (below main CTA):**
-> Not ready to commit yet?  
-> [Sign up for free email tasks] or [Get the $17 workbook]
+**CTA Row (button + alternatives side-by-side):**
+- **Primary CTA:** Join the Sprint - $99
+- **Secondary:** Not ready to commit yet? Free email tasks | $17 workbook
 
 ---
 
@@ -52,40 +52,43 @@ All copy for `sprint-landing.html` in one place for easy editing.
 
 ---
 
-## What You Get Section
+## 10 Days to Launch Section
 
 **Headline:**
 > 10 Days to Launch
 
-### Timeline (Left Column - 4 boxes)
+**Subtitle:**
+> Here's what we'll work on together, day by day
 
-| Days | Focus |
-|------|-------|
-| Days 1-3 | Validate & Position |
-| Days 4-6 | Build & Register |
-| Days 7-9 | Market & Sell |
-| Day 10 | Launch & Pitch |
+### Day-by-Day Grid (5 columns x 2 rows)
 
-### What You'll Create (Right Column - 9 items)
-- Validated problem with real customer evidence
-- Clear customer persona and positioning
-- Complete business model with pricing
-- Registered legal entity and business accounts
-- Live website at your custom domain
-- Content strategy with marketing channel set up
-- First paying customers or users
-- Compelling 2-minute founder pitch and investment plan
-- 90-day roadmap for continued growth
+| Day | Title | Description |
+|-----|-------|-------------|
+| 01 | Problem Discovery & Validation | Find problems worth solving and validate them with real people |
+| 02 | Customer & Market Understanding | Define your ideal customer and understand your market |
+| 03 | Product Definition & Feature Roadmap | Define what you're building and prioritize features |
+| 04 | Value Proposition & Business Model | Craft your value prop and figure out how you'll make money |
+| 05 | Prototyping & User Journey | Build a prototype and map the customer experience |
+| 06 | Legal Entity & Business Setup | Register your business and set up accounts |
+| 07 | Website & Digital Presence | Build your website and establish online presence |
+| 08 | Content & Marketing | Create content and set up marketing channels |
+| 09 | Soft Launch & First Customers | Start selling and get your first customers |
+| 10 | Public Launch & Pitch (featured) | Go live publicly and deliver your founder pitch |
 
 ---
 
-## Pricing Section
+## Pricing Section (Horizontal Slider Layout)
 
 **Headline:**
 > Choose Your Path
 
 **Subheadline:**
 > Maximum accountability, structured self-paced, or free exploration. All roads lead to launch.
+
+### Layout
+Each tier is a horizontal slide with:
+- **Left side:** Tier label, name, price, short description
+- **Right side:** Feature list + CTA button
 
 ---
 
@@ -97,7 +100,7 @@ All copy for `sprint-landing.html` in one place for easy editing.
 **Price:** $99
 
 **Description:**
-> 10 live group sessions with real-time feedback and accountability. The fastest path to launch.
+> 10 live group sessions with real-time feedback and accountability.
 
 **Features:**
 - 10 live sessions (2-3 hours each)
@@ -105,13 +108,9 @@ All copy for `sprint-landing.html` in one place for easy editing.
 - Real-time feedback on your business
 - Complete workbook + all templates
 - Telegram community access
-- Build alongside the facilitator
-- Session recordings
-- Alumni network
+- Session recordings + Alumni network
 
-**Perfect for:** Builders who need structure, feedback, and a deadline
-
-**Promo Code Prompt:** Have a friend code?
+**Promo Code Prompt:** Participated before? Use your ID code
 **Promo Success:** Code accepted! Join free.
 **Promo Error:** Invalid code. Try again.
 
@@ -126,7 +125,7 @@ All copy for `sprint-landing.html` in one place for easy editing.
 **Price:** $17
 
 **Description:**
-> The complete 10-day framework. All exercises, templates, and case studies. Work at your own pace.
+> The complete 10-day framework with all exercises and templates.
 
 **Features:**
 - Complete 10-day framework (PDF + HTML)
@@ -135,8 +134,6 @@ All copy for `sprint-landing.html` in one place for easy editing.
 - Step-by-step exercises
 - Print-optimized design
 - Lifetime access
-
-**Perfect for:** Self-starters who want structure without live sessions
 
 **CTA:** Get the Workbook - $17
 
@@ -149,7 +146,7 @@ All copy for `sprint-landing.html` in one place for easy editing.
 **Price:** $0
 
 **Description:**
-> Get the same daily tasks delivered to your inbox. One email per day for 10 days.
+> Daily tasks delivered to your inbox for 10 days.
 
 **Features:**
 - 10 days of guided tasks
@@ -157,78 +154,18 @@ All copy for `sprint-landing.html` in one place for easy editing.
 - Build at your own pace
 - Unsubscribe anytime
 
-**Perfect for:** Explorers testing if this approach works for them
-
 **Email Placeholder:** your@email.com
 **CTA:** Start Free
-
----
-
-## Comparison Table
-
-| Feature | Email (Free) | Workbook ($17) | Live Sprint ($99) |
-|---------|--------------|----------------|-------------------|
-| Daily tasks | ✓ | ✓ | ✓ |
-| All templates | — | ✓ | ✓ |
-| Case studies | — | ✓ | ✓ |
-| Live sessions | — | — | ✓ |
-| Group feedback | — | — | ✓ |
-| Accountability | — | — | ✓ |
-| Community access | — | — | ✓ |
-
----
-
-## Social Proof Section
-
-**Headline:**
-> From Idea to Launched
-
-### Testimonial 1
-**Quote:** "18 months of planning. 10 days to actually launch. The structure and accountability made all the difference."
-**Name:** Sarah K.
-**Role:** Coaching Business
-
-### Testimonial 2
-**Quote:** "The facilitator was building their own product alongside us. It wasn't theory—it was real."
-**Name:** Marcus R.
-**Role:** SaaS MVP
-
-### Testimonial 3
-**Quote:** "I started with a vague idea. Left with a registered business and my first 3 customers."
-**Name:** Jamie L.
-**Role:** Eco-product Brand
 
 ---
 
 ## Facilitator Section
 
 **Headline:**
-> Your Sprint Partner
+> I am your Sprint Partner
 
 **Bio:**
 > I started this sprint because I love experimenting and I do my best work when I'm surrounded by others doing the same. Every cohort, I build alongside you—working on my own projects while facilitating. When you're stuck, we figure it out together. When you ship, we celebrate together.
-
----
-
-## FAQ Section
-
-**Headline:**
-> Frequently Asked Questions
-
-### Q1: What if I don't have a clear idea yet?
-**A:** Day 1 is specifically about discovering and validating ideas. Many start with nothing concrete and leave with a launched business.
-
-### Q2: How much time do I need?
-**A:** Live sprint: 2-3 hours/day for sessions + independent work. Workbook: You control your schedule.
-
-### Q3: What's the difference between the tiers?
-**A:** Email = same tasks, alone. Workbook = all templates + case studies, alone. Live Sprint = everything + group sessions + real-time feedback + accountability.
-
-### Q4: I have a friend code. How do I use it?
-**A:** Enter it in the promo code field on the Live Sprint option. Valid codes let you join for free.
-
-### Q5: Can I upgrade later?
-**A:** Yes. Email subscribers can upgrade to Workbook ($17) or Live Sprint ($99). Workbook buyers can upgrade to Live Sprint (pay the difference).
 
 ---
 
@@ -291,7 +228,15 @@ Before launch, update these placeholders:
 | `March 2026` | Actual cohort start date |
 | Payment links | Stripe/Gumroad checkout URLs |
 | Email form action | Email service integration |
-| Testimonials | Real testimonials when available |
+
+---
+
+## Removed Sections
+
+The following sections have been removed from the landing page:
+- Comparison Table (feature comparison between tiers)
+- Social Proof / Testimonials ("From Idea to Launched")
+- FAQ Section
 
 ---
 

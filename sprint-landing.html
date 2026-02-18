@@ -170,6 +170,12 @@
             text-decoration: none;
         }
         
+        .nav-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+        }
+        
         .nav-cta {
             padding: 10px 20px;
             font-size: 14px;
@@ -208,26 +214,32 @@
             margin-bottom: var(--space-lg);
         }
         
-        .hero-buttons {
+        .hero-cta-row {
             display: flex;
-            gap: var(--space-sm);
+            align-items: center;
+            gap: var(--space-lg);
             flex-wrap: wrap;
         }
         
-        .hero-alternatives {
-            margin-top: var(--space-md);
-            font-size: 16px;
+        .hero-alternatives-inline {
+            font-size: 15px;
             color: var(--gray-600);
         }
         
-        .hero-alternatives p {
-            margin-bottom: var(--space-xs);
+        .hero-alternatives-inline p {
+            margin-bottom: 4px;
             color: var(--gray-500);
+            font-size: 14px;
         }
         
-        .hero-alternatives span {
-            margin: 0 8px;
-            color: var(--gray-400);
+        .hero-alt-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .hero-alt-links span {
+            color: var(--gray-300);
         }
         
         .hero-alt-link {
@@ -306,83 +318,81 @@
         
         /* ===== VALUE SECTION ===== */
         .value-section {
-            padding: var(--space-lg) 0;
+            padding: var(--space-xl) 0;
             background: var(--black);
             color: var(--white);
         }
         
         .value-section h2 {
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-xs);
         }
         
-        .launch-grid {
+        .value-subtitle {
+            color: var(--gray-400);
+            font-size: 18px;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .days-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: var(--space-lg);
-            align-items: start;
-        }
-        
-        .timeline-column {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: repeat(5, 1fr);
             gap: var(--space-sm);
         }
         
-        .timeline-box {
+        .day-card {
             background: var(--gray-800);
+            border-radius: 12px;
             padding: var(--space-md);
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            transition: transform 0.2s ease, background 0.2s ease;
         }
         
-        .timeline-days {
+        .day-card:hover {
+            transform: translateY(-4px);
+            background: var(--gray-700);
+        }
+        
+        .day-card.featured {
+            background: var(--accent);
+        }
+        
+        .day-card.featured:hover {
+            background: var(--accent-hover);
+        }
+        
+        .day-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .day-card.featured .day-number {
+            color: var(--white);
+        }
+        
+        .day-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+        
+        .day-desc {
             font-size: 12px;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 4px;
+            color: var(--gray-400);
+            line-height: 1.4;
         }
         
-        .timeline-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--white);
-        }
-        
-        .outcomes-column h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: var(--space-sm);
-            color: var(--white);
-        }
-        
-        .outcomes-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .outcomes-list li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
-            font-size: 15px;
-            line-height: 1.5;
-            color: var(--gray-300);
-        }
-        
-        .outcomes-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
+        .day-card.featured .day-desc {
+            color: rgba(255, 255, 255, 0.8);
         }
         
         /* ===== PRICING SECTION ===== */
         .pricing-section {
-            padding: var(--space-2xl) 0;
+            padding: var(--space-xl) 0;
             background: var(--white);
         }
         
@@ -391,96 +401,102 @@
         }
         
         .pricing-subtitle {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--gray-500);
-            margin-bottom: var(--space-xl);
+            margin-bottom: var(--space-lg);
         }
         
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--space-md);
-            align-items: stretch;
-        }
-        
-        .pricing-card {
-            border: 2px solid var(--gray-200);
-            border-radius: 16px;
-            padding: var(--space-lg);
+        .pricing-slider {
             display: flex;
             flex-direction: column;
-            position: relative;
-            background: var(--white);
+            gap: var(--space-md);
         }
         
-        .pricing-card.featured {
+        .pricing-slide {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            border: 2px solid var(--gray-200);
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--white);
+            position: relative;
+        }
+        
+        .pricing-slide.featured {
             border-color: var(--accent);
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.15);
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.12);
+        }
+        
+        .slide-left {
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-right: 1px solid var(--gray-200);
+            position: relative;
+        }
+        
+        .pricing-slide.featured .slide-left {
+            background: linear-gradient(135deg, #FFF5F2 0%, #FFECE5 100%);
+        }
+        
+        .slide-right {
+            padding: var(--space-md);
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
         }
         
         .pricing-badge {
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: var(--space-sm);
+            right: var(--space-sm);
             background: var(--accent);
             color: var(--white);
-            padding: 6px 16px;
+            padding: 4px 10px;
             border-radius: 100px;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         .pricing-tier {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--gray-500);
-            margin-bottom: var(--space-xs);
+            margin-bottom: 4px;
         }
         
         .pricing-name {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-xs);
         }
         
         .pricing-price {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 900;
             margin-bottom: var(--space-xs);
         }
         
-        .pricing-price span {
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--gray-500);
-        }
-        
         .pricing-description {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--gray-500);
-            margin-bottom: var(--space-md);
-            padding-bottom: var(--space-md);
-            border-bottom: 1px solid var(--gray-200);
+            line-height: 1.5;
         }
         
         .pricing-features {
             list-style: none;
-            margin-bottom: var(--space-lg);
-            flex-grow: 1;
+            flex: 1;
         }
         
         .pricing-features li {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-            font-size: 15px;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
             color: var(--gray-700);
         }
         
@@ -491,32 +507,27 @@
             flex-shrink: 0;
         }
         
-        .pricing-for {
-            font-size: 14px;
-            color: var(--gray-500);
-            margin-bottom: var(--space-md);
+        .slide-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            min-width: 200px;
         }
         
-        .pricing-for strong {
-            color: var(--black);
-        }
-        
-        .pricing-card .btn {
+        .slide-actions .btn {
             width: 100%;
         }
         
         /* Promo Code Section */
         .promo-section {
-            margin-bottom: var(--space-md);
-            padding-top: var(--space-sm);
-            border-top: 1px solid var(--gray-200);
+            margin-bottom: var(--space-xs);
         }
         
         .promo-toggle {
             background: none;
             border: none;
             color: var(--gray-500);
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             text-decoration: underline;
             font-family: var(--font-sans);
@@ -530,7 +541,7 @@
         .promo-form {
             display: none;
             gap: 8px;
-            margin-top: var(--space-sm);
+            margin-top: var(--space-xs);
         }
         
         .promo-form.visible {
@@ -906,15 +917,31 @@
                 padding-bottom: 80px;
             }
             
-            .pricing-card.featured {
-                transform: none;
+            .pricing-slide {
+                grid-template-columns: 1fr;
             }
             
-            .hero-buttons {
+            .slide-left {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+            }
+            
+            .slide-right {
                 flex-direction: column;
+                align-items: stretch;
             }
             
-            .hero-buttons .btn {
+            .slide-actions {
+                min-width: auto;
+            }
+            
+            .hero-cta-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+            }
+            
+            .hero-cta-row .btn {
                 width: 100%;
             }
             
@@ -933,18 +960,12 @@
                 gap: var(--space-sm);
             }
             
-            .launch-grid {
-                grid-template-columns: 1fr;
+            .days-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .timeline-column {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            
-            .timeline-box {
-                flex: 1 1 calc(50% - var(--space-xs));
-                min-width: 140px;
+            .day-card:last-child {
+                grid-column: span 2;
             }
         }
     </style>
@@ -954,7 +975,10 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="#" class="nav-logo">10-Day Sprint</a>
-            <a href="#pricing" class="btn btn-primary nav-cta">Get Started</a>
+            <div class="nav-buttons">
+                <a href="mailto:olgamzhurova@gmail.com" class="btn btn-outline nav-cta">Ask a question</a>
+                <a href="#pricing" class="btn btn-primary nav-cta">Get Started</a>
+            </div>
         </div>
     </nav>
 
@@ -965,14 +989,16 @@
                 <span class="hero-badge">Next cohort: March 2026</span>
                 <h1>Stop Planning.<br>Start Launching.</h1>
                 <p class="lead">From idea to live business in 10 working days. Join a community of builders doing it together—with AI on your side.</p>
-                <div class="hero-buttons">
+                <div class="hero-cta-row">
                     <a href="#pricing" class="btn btn-accent btn-lg">Join the Sprint - $99</a>
-                </div>
-                <div class="hero-alternatives">
-                    <p>Not ready to commit yet?</p>
-                    <a href="#pricing" class="hero-alt-link">Sign up for free email tasks</a>
-                    <span>or</span>
-                    <a href="#pricing" class="hero-alt-link">Get the $17 workbook</a>
+                    <div class="hero-alternatives-inline">
+                        <p>Not ready to commit yet?</p>
+                        <div class="hero-alt-links">
+                            <a href="#pricing" class="hero-alt-link">Free email tasks</a>
+                            <span>|</span>
+                            <a href="#pricing" class="hero-alt-link">$17 workbook</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1011,42 +1037,78 @@
     <section class="value-section">
         <div class="container">
             <h2 class="text-center">10 Days to Launch</h2>
+            <p class="value-subtitle text-center">Here's what we'll work on together, day by day</p>
             
-            <div class="launch-grid">
-                <!-- Left: Timeline -->
-                <div class="timeline-column">
-                    <div class="timeline-box">
-                        <div class="timeline-days">Days 1-3</div>
-                        <div class="timeline-title">Validate & Position</div>
-                    </div>
-                    <div class="timeline-box">
-                        <div class="timeline-days">Days 4-6</div>
-                        <div class="timeline-title">Build & Register</div>
-                    </div>
-                    <div class="timeline-box">
-                        <div class="timeline-days">Days 7-9</div>
-                        <div class="timeline-title">Market & Sell</div>
-                    </div>
-                    <div class="timeline-box">
-                        <div class="timeline-days">Day 10</div>
-                        <div class="timeline-title">Launch & Pitch</div>
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day-number">01</div>
+                    <div class="day-content">
+                        <div class="day-title">Problem Discovery & Validation</div>
+                        <div class="day-desc">Find problems worth solving and validate them with real people</div>
                     </div>
                 </div>
-                
-                <!-- Right: Outcomes -->
-                <div class="outcomes-column">
-                    <h3>What You'll Create</h3>
-                    <ul class="outcomes-list">
-                        <li>Validated problem with real customer evidence</li>
-                        <li>Clear customer persona and positioning</li>
-                        <li>Complete business model with pricing</li>
-                        <li>Registered legal entity and business accounts</li>
-                        <li>Live website at your custom domain</li>
-                        <li>Content strategy with marketing channel set up</li>
-                        <li>First paying customers or users</li>
-                        <li>Compelling 2-minute founder pitch and investment plan</li>
-                        <li>90-day roadmap for continued growth</li>
-                    </ul>
+                <div class="day-card">
+                    <div class="day-number">02</div>
+                    <div class="day-content">
+                        <div class="day-title">Customer & Market Understanding</div>
+                        <div class="day-desc">Define your ideal customer and understand your market</div>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <div class="day-number">03</div>
+                    <div class="day-content">
+                        <div class="day-title">Product Definition & Feature Roadmap</div>
+                        <div class="day-desc">Define what you're building and prioritize features</div>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <div class="day-number">04</div>
+                    <div class="day-content">
+                        <div class="day-title">Value Proposition & Business Model</div>
+                        <div class="day-desc">Craft your value prop and figure out how you'll make money</div>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <div class="day-number">05</div>
+                    <div class="day-content">
+                        <div class="day-title">Prototyping & User Journey</div>
+                        <div class="day-desc">Build a prototype and map the customer experience</div>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <div class="day-number">06</div>
+                    <div class="day-content">
+                        <div class="day-title">Legal Entity & Business Setup</div>
+                        <div class="day-desc">Register your business and set up accounts</div>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <div class="day-number">07</div>
+                    <div class="day-content">
+                        <div class="day-title">Website & Digital Presence</div>
+                        <div class="day-desc">Build your website and establish online presence</div>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <div class="day-number">08</div>
+                    <div class="day-content">
+                        <div class="day-title">Content & Marketing</div>
+                        <div class="day-desc">Create content and set up marketing channels</div>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <div class="day-number">09</div>
+                    <div class="day-content">
+                        <div class="day-title">Soft Launch & First Customers</div>
+                        <div class="day-desc">Start selling and get your first customers</div>
+                    </div>
+                </div>
+                <div class="day-card featured">
+                    <div class="day-number">10</div>
+                    <div class="day-content">
+                        <div class="day-title">Public Launch & Pitch</div>
+                        <div class="day-desc">Go live publicly and deliver your founder pitch</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1058,190 +1120,90 @@
             <h2 class="text-center">Choose Your Path</h2>
             <p class="pricing-subtitle text-center">Maximum accountability, structured self-paced, or free exploration. All roads lead to launch.</p>
             
-            <div class="pricing-grid">
+            <div class="pricing-slider">
                 <!-- Live Sprint - Featured -->
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Best Value</div>
-                    <div class="pricing-tier">Live Cohort</div>
-                    <div class="pricing-name">Live Sprint</div>
-                    <div class="pricing-price" id="livePrice">$99</div>
-                    <p class="pricing-description">10 live group sessions with real-time feedback and accountability. The fastest path to launch.</p>
-                    
-                    <ul class="pricing-features">
-                        <li>10 live sessions (2-3 hours each)</li>
-                        <li>Small cohort (max 12 people)</li>
-                        <li>Real-time feedback on your business</li>
-                        <li>Complete workbook + all templates</li>
-                        <li>Telegram community access</li>
-                        <li>Build alongside the facilitator</li>
-                        <li>Session recordings</li>
-                        <li>Alumni network</li>
-                    </ul>
-                    
-                    <p class="pricing-for"><strong>Perfect for:</strong> Builders who need structure, feedback, and a deadline</p>
-                    
-                    <div class="promo-section">
-                        <button class="promo-toggle" onclick="togglePromo()">Have a friend code?</button>
-                        <div class="promo-form" id="promoForm">
-                            <input type="text" class="promo-input" id="promoCode" placeholder="Enter code">
-                            <button class="promo-apply" onclick="applyCode()">Apply</button>
-                        </div>
-                        <div class="promo-success" id="promoSuccess">Code accepted! Join free.</div>
-                        <div class="promo-error" id="promoError">Invalid code. Try again.</div>
+                <div class="pricing-slide featured">
+                    <div class="slide-left">
+                        <div class="pricing-badge">Best Value</div>
+                        <div class="pricing-tier">Live Cohort</div>
+                        <div class="pricing-name">Live Sprint</div>
+                        <div class="pricing-price" id="livePrice">$99</div>
+                        <p class="pricing-description">10 live group sessions with real-time feedback and accountability.</p>
                     </div>
-                    
-                    <a href="#" class="btn btn-accent" id="liveCta">Join the Sprint - $99</a>
+                    <div class="slide-right">
+                        <ul class="pricing-features">
+                            <li>10 live sessions (2-3 hours each)</li>
+                            <li>Small cohort (max 12 people)</li>
+                            <li>Real-time feedback on your business</li>
+                            <li>Complete workbook + all templates</li>
+                            <li>Telegram community access</li>
+                            <li>Session recordings + Alumni network</li>
+                        </ul>
+                        <div class="slide-actions">
+                            <div class="promo-section">
+                                <button class="promo-toggle" onclick="togglePromo()">Participated before? Use your ID code</button>
+                                <div class="promo-form" id="promoForm">
+                                    <input type="text" class="promo-input" id="promoCode" placeholder="Enter code">
+                                    <button class="promo-apply" onclick="applyCode()">Apply</button>
+                                </div>
+                                <div class="promo-success" id="promoSuccess">Code accepted! Join free.</div>
+                                <div class="promo-error" id="promoError">Invalid code. Try again.</div>
+                            </div>
+                            <a href="#" class="btn btn-accent" id="liveCta">Join the Sprint - $99</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Workbook -->
-                <div class="pricing-card">
-                    <div class="pricing-tier">Self-Paced</div>
-                    <div class="pricing-name">Sprint Workbook</div>
-                    <div class="pricing-price">$17</div>
-                    <p class="pricing-description">The complete 10-day framework. All exercises, templates, and case studies. Work at your own pace.</p>
-                    
-                    <ul class="pricing-features">
-                        <li>Complete 10-day framework (PDF + HTML)</li>
-                        <li>All 7 canvas templates</li>
-                        <li>15+ real company case studies</li>
-                        <li>Step-by-step exercises</li>
-                        <li>Print-optimized design</li>
-                        <li>Lifetime access</li>
-                    </ul>
-                    
-                    <p class="pricing-for"><strong>Perfect for:</strong> Self-starters who want structure without live sessions</p>
-                    
-                    <a href="#" class="btn btn-primary">Get the Workbook - $17</a>
+                <div class="pricing-slide">
+                    <div class="slide-left">
+                        <div class="pricing-tier">Self-Paced</div>
+                        <div class="pricing-name">Sprint Workbook</div>
+                        <div class="pricing-price">$17</div>
+                        <p class="pricing-description">The complete 10-day framework with all exercises and templates.</p>
+                    </div>
+                    <div class="slide-right">
+                        <ul class="pricing-features">
+                            <li>Complete 10-day framework (PDF + HTML)</li>
+                            <li>All 7 canvas templates</li>
+                            <li>15+ real company case studies</li>
+                            <li>Step-by-step exercises</li>
+                            <li>Print-optimized design</li>
+                            <li>Lifetime access</li>
+                        </ul>
+                        <div class="slide-actions">
+                            <a href="#" class="btn btn-primary">Get the Workbook - $17</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Free Email -->
-                <div class="pricing-card">
-                    <div class="pricing-tier">Free</div>
-                    <div class="pricing-name">Daily Tasks Email</div>
-                    <div class="pricing-price">$0</div>
-                    <p class="pricing-description">Get the same daily tasks delivered to your inbox. One email per day for 10 days.</p>
-                    
-                    <ul class="pricing-features">
-                        <li>10 days of guided tasks</li>
-                        <li>Key frameworks explained</li>
-                        <li>Build at your own pace</li>
-                        <li>Unsubscribe anytime</li>
-                    </ul>
-                    
-                    <p class="pricing-for"><strong>Perfect for:</strong> Explorers testing if this approach works for them</p>
-                    
-                    <form class="email-form" onsubmit="return handleEmailSubmit(event)">
-                        <input type="email" class="email-input" placeholder="your@email.com" required>
-                        <button type="submit" class="btn btn-primary">Start Free</button>
-                    </form>
+                <div class="pricing-slide">
+                    <div class="slide-left">
+                        <div class="pricing-tier">Free</div>
+                        <div class="pricing-name">Daily Tasks Email</div>
+                        <div class="pricing-price">$0</div>
+                        <p class="pricing-description">Daily tasks delivered to your inbox for 10 days.</p>
+                    </div>
+                    <div class="slide-right">
+                        <ul class="pricing-features">
+                            <li>10 days of guided tasks</li>
+                            <li>Key frameworks explained</li>
+                            <li>Build at your own pace</li>
+                            <li>Unsubscribe anytime</li>
+                        </ul>
+                        <div class="slide-actions">
+                            <form class="email-form" onsubmit="return handleEmailSubmit(event)">
+                                <input type="email" class="email-input" placeholder="your@email.com" required>
+                                <button type="submit" class="btn btn-primary">Start Free</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Table -->
-    <section class="comparison-section">
-        <div class="container">
-            <div class="comparison-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Email (Free)</th>
-                            <th>Workbook ($17)</th>
-                            <th>Live Sprint ($99)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Daily tasks</td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>All templates</td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Case studies</td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Live sessions</td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Group feedback</td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Accountability</td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Community access</td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="dash">—</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="social-section">
-        <div class="container">
-            <h2 class="text-center">From Idea to Launched</h2>
-            
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p class="testimonial-quote">"18 months of planning. 10 days to actually launch. The structure and accountability made all the difference."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">SK</div>
-                        <div>
-                            <div class="testimonial-name">Sarah K.</div>
-                            <div class="testimonial-role">Coaching Business</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial">
-                    <p class="testimonial-quote">"The facilitator was building their own product alongside us. It wasn't theory—it was real."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">MR</div>
-                        <div>
-                            <div class="testimonial-name">Marcus R.</div>
-                            <div class="testimonial-role">SaaS MVP</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial">
-                    <p class="testimonial-quote">"I started with a vague idea. Left with a registered business and my first 3 customers."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">JL</div>
-                        <div>
-                            <div class="testimonial-name">Jamie L.</div>
-                            <div class="testimonial-role">Eco-product Brand</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Facilitator Section -->
     <section class="facilitator-section">
@@ -1249,7 +1211,7 @@
             <div class="facilitator-content">
                 <div class="facilitator-image">[Your Photo]</div>
                 <div class="facilitator-text">
-                    <h2>Your Sprint Partner</h2>
+                    <h2>I am your Sprint Partner</h2>
                     <p class="facilitator-bio">
                         I started this sprint because I love experimenting and I do my best work when I'm surrounded by others doing the same. Every cohort, I build alongside you—working on my own projects while facilitating. When you're stuck, we figure it out together. When you ship, we celebrate together.
                     </p>
@@ -1258,39 +1220,6 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="text-center">Frequently Asked Questions</h2>
-            
-            <div class="faq-list">
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">What if I don't have a clear idea yet?</div>
-                    <div class="faq-answer">Day 1 is specifically about discovering and validating ideas. Many start with nothing concrete and leave with a launched business.</div>
-                </div>
-                
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">How much time do I need?</div>
-                    <div class="faq-answer">Live sprint: 2-3 hours/day for sessions + independent work. Workbook: You control your schedule.</div>
-                </div>
-                
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">What's the difference between the tiers?</div>
-                    <div class="faq-answer">Email = same tasks, alone. Workbook = all templates + case studies, alone. Live Sprint = everything + group sessions + real-time feedback + accountability.</div>
-                </div>
-                
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">I have a friend code. How do I use it?</div>
-                    <div class="faq-answer">Enter it in the promo code field on the Live Sprint option. Valid codes let you join for free.</div>
-                </div>
-                
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">Can I upgrade later?</div>
-                    <div class="faq-answer">Yes. Email subscribers can upgrade to Workbook ($17) or Live Sprint ($99). Workbook buyers can upgrade to Live Sprint (pay the difference).</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Final CTA Section -->
     <section class="final-cta">
