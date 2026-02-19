@@ -256,60 +256,170 @@
         
         /* ===== WHO BENEFITS SECTION ===== */
         .benefits-section {
-            padding: var(--space-lg) 0;
+            padding: var(--space-xl) 0;
             background: var(--gray-50);
         }
         
         .benefits-section h2 {
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-xs);
             font-size: clamp(28px, 4vw, 40px);
         }
         
-        .personas-row {
+        .benefits-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--gray-500);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .problems-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-md);
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .problem-card {
+            background: var(--white);
+            padding: var(--space-lg);
+            border-radius: 16px;
+            border: 2px solid var(--gray-200);
+            position: relative;
+        }
+        
+        .problem-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .problem-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .problem-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
+            color: var(--black);
+            line-height: 1.3;
+        }
+        
+        .problem-card .pain-points {
+            list-style: none;
             margin-bottom: var(--space-md);
         }
         
-        .persona-card {
-            background: var(--white);
-            padding: var(--space-md);
-            border-radius: 12px;
-            border: 1px solid var(--gray-200);
-        }
-        
-        .persona-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: var(--space-xs);
-            color: var(--accent);
-        }
-        
-        .persona-card p {
+        .problem-card .pain-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
             font-size: 15px;
             line-height: 1.6;
             color: var(--gray-600);
-            margin: 0;
+            margin-bottom: 10px;
         }
         
-        .why-now {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-top: var(--space-sm);
+        .problem-card .pain-points li::before {
+            content: "→";
+            color: var(--gray-400);
+            flex-shrink: 0;
         }
         
-        .why-now h3 {
-            font-size: 20px;
-            margin-bottom: var(--space-sm);
+        .problem-card .solution-text {
+            font-size: 15px;
+            font-weight: 600;
             color: var(--black);
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--gray-200);
         }
         
-        .why-now p {
+        .why-now-banner {
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            border-radius: 20px;
+            padding: var(--space-lg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+        
+        .why-now-content h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .why-now-content h3 span {
+            color: var(--accent);
+        }
+        
+        .why-now-content p {
             font-size: 16px;
             line-height: 1.7;
-            color: var(--gray-600);
+            color: var(--gray-300);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .why-now-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .why-now-features {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .why-now-feature {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: rgba(255,255,255,0.08);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 12px;
+        }
+        
+        .why-now-feature .feature-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        
+        .why-now-feature .feature-text {
+            flex: 1;
+        }
+        
+        .why-now-feature .feature-text strong {
+            display: block;
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+        
+        .why-now-feature .feature-text span {
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 900px) {
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .why-now-banner {
+                grid-template-columns: 1fr;
+            }
         }
         
         .why-now strong {
@@ -406,20 +516,68 @@
             margin-bottom: var(--space-lg);
         }
         
+        .pricing-slider-wrapper {
+            position: relative;
+        }
+        
+        .pricing-slider-wrapper::after {
+            content: "→";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(to left, var(--white) 60%, transparent);
+            padding: 20px 10px 20px 40px;
+            font-size: 24px;
+            color: var(--accent);
+            pointer-events: none;
+            animation: pulse-arrow 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-arrow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
         .pricing-slider {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: var(--space-md);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: var(--space-sm);
+            padding-right: 60px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--gray-100);
+        }
+        
+        .pricing-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .pricing-slider::-webkit-scrollbar-track {
+            background: var(--gray-100);
+            border-radius: 4px;
+        }
+        
+        .pricing-slider::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
         }
         
         .pricing-slide {
-            display: grid;
-            grid-template-columns: 280px 1fr;
+            display: flex;
+            flex-direction: row;
+            min-width: 680px;
+            max-width: 680px;
             border: 2px solid var(--gray-200);
             border-radius: 16px;
             overflow: hidden;
             background: var(--white);
             position: relative;
+            scroll-snap-align: start;
+            flex-shrink: 0;
         }
         
         .pricing-slide.featured {
@@ -432,6 +590,8 @@
             background: var(--gray-50);
             border-right: 1px solid var(--gray-200);
             position: relative;
+            min-width: 240px;
+            max-width: 240px;
         }
         
         .pricing-slide.featured .slide-left {
@@ -441,8 +601,9 @@
         .slide-right {
             padding: var(--space-md);
             display: flex;
-            gap: var(--space-md);
-            align-items: center;
+            flex-direction: column;
+            gap: var(--space-sm);
+            flex: 1;
         }
         
         .pricing-badge {
@@ -749,10 +910,10 @@
         
         .facilitator-content {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 350px 1fr;
             gap: var(--space-xl);
-            align-items: center;
-            max-width: 900px;
+            align-items: start;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
@@ -768,25 +929,37 @@
         }
         
         .facilitator-image {
-            width: 250px;
-            height: 250px;
-            background: var(--gray-200);
+            width: 350px;
+            height: auto;
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--gray-400);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .facilitator-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         .facilitator-text h2 {
-            margin-bottom: var(--space-md);
-            font-size: 36px;
+            margin-bottom: var(--space-sm);
+            font-size: 32px;
         }
         
         .facilitator-bio {
-            font-size: 18px;
+            font-size: 15px;
             line-height: 1.7;
+            margin-bottom: var(--space-sm);
+            color: var(--gray-600);
+        }
+        
+        .facilitator-bio:last-child {
+            margin-bottom: 0;
+        }
+        
+        .facilitator-bio strong {
+            color: var(--black);
         }
         
         /* ===== FAQ SECTION ===== */
@@ -918,7 +1091,21 @@
             }
             
             .pricing-slide {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                min-width: 300px;
+                max-width: 300px;
+            }
+            
+            .pricing-slide .slide-left {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+                min-width: auto;
+                max-width: none;
+            }
+            
+            .pricing-slider-wrapper::after {
+                padding: 15px 5px 15px 30px;
+                font-size: 20px;
             }
             
             .slide-left {
@@ -987,8 +1174,8 @@
         <div class="container">
             <div class="hero-content">
                 <span class="hero-badge">Next cohort: March 2026</span>
-                <h1>Stop Planning.<br>Start Launching.</h1>
-                <p class="lead">From idea to live business in 10 working days. Join a community of builders doing it together—with AI on your side.</p>
+                <h1>Stop Planning.<br>Do now.</h1>
+                <p class="lead">From idea to live business in 10 working days within a month. Join a community of business creators doing it together  -  with AI on your side.</p>
                 <div class="hero-cta-row">
                     <a href="#pricing" class="btn btn-accent btn-lg">Join the Sprint - $99</a>
                     <div class="hero-alternatives-inline">
@@ -1000,35 +1187,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Who Benefits Section -->
-    <section class="benefits-section">
-        <div class="container">
-            <h2 class="text-center">Who Would Benefit From This Sprint</h2>
-            
-            <div class="personas-row">
-                <div class="persona-card">
-                    <h4>The Corporate Dreamer</h4>
-                    <p>Stable job, but Sunday nights you feel the pull. You want to test an idea without quitting anything—a low-risk experiment to see if it has legs.</p>
-                </div>
-                
-                <div class="persona-card">
-                    <h4>The Small Business Owner</h4>
-                    <p>You already run something but want to try new things. A group to bounce ideas off and some structure to actually ship something new.</p>
-                </div>
-                
-                <div class="persona-card">
-                    <h4>The "Someday" Experimenter</h4>
-                    <p>You've been meaning to start for a while. What if the right time is just picking a small idea and trying it with others doing the same?</p>
-                </div>
-            </div>
-            
-            <div class="why-now">
-                <h3>The Right Moment Is Now</h3>
-                <p><strong>Here's what changed: AI.</strong> Building a business no longer requires skills you don't have. This sprint isn't a course—it's a group of builders doing it together. I'm building too. In 10 working days, we go from "I've been meaning to..." to "It's live." Because we're doing it together.</p>
             </div>
         </div>
     </section>
@@ -1114,12 +1272,108 @@
         </div>
     </section>
 
+    <!-- Who Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="text-center">Sound Familiar?</h2>
+            <p class="benefits-subtitle">This sprint is for people who recognize themselves here</p>
+            
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-label">You have a stable job, but...</div>
+                    <h3>You dream of building something of your own</h3>
+                    <ul class="pain-points">
+                        <li>Sunday nights, you feel the pull - there's an idea you can't stop thinking about</li>
+                        <li>You don't want to quit your job to "figure it out"</li>
+                        <li>You want a low-risk way to test if your idea has legs</li>
+                        <li>You're curious if corporate product methods could work for your side project</li>
+                    </ul>
+                    <p class="solution-text">This sprint lets you test your idea in 10 days - without risking your income.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-label">You have a business idea, but...</div>
+                    <h3>You can't seem to actually start</h3>
+                    <ul class="pain-points">
+                        <li>You've been thinking about this idea for months (or years)</li>
+                        <li>You're tired of endless planning, research, and "getting ready"</li>
+                        <li>You want structure, motivation, and a deadline that actually works</li>
+                        <li>You want to build something real - service, digital product, or physical</li>
+                    </ul>
+                    <p class="solution-text">This sprint gives you the structure and community to finally ship.</p>
+                </div>
+            </div>
+            
+            <div class="why-now-banner">
+                <div class="why-now-content">
+                    <h3>Why <span>now</span> is the moment</h3>
+                    <p>Here's what changed: <strong>AI.</strong></p>
+                    <p>You don't need to quit your job. You don't need to hire a team. Many tasks that used to take weeks - writing copy, building websites, creating designs - AI can help you do in hours.</p>
+                    <p>The barriers that stopped you before? They're lower than ever. All you need is structure and people doing it alongside you.</p>
+                </div>
+                <div class="why-now-features">
+                    <div class="why-now-feature">
+                        <div class="feature-icon">🤖</div>
+                        <div class="feature-text">
+                            <strong>AI as your co-builder</strong>
+                            <span>Handle manual tasks in hours, not weeks</span>
+                        </div>
+                    </div>
+                    <div class="why-now-feature">
+                        <div class="feature-icon">👥</div>
+                        <div class="feature-text">
+                            <strong>Community of builders</strong>
+                            <span>People doing the exact same thing, right now</span>
+                        </div>
+                    </div>
+                    <div class="why-now-feature">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-text">
+                            <strong>10-day structure</strong>
+                            <span>Clear steps, real deadlines, actual results</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilitator Section -->
+    <section class="facilitator-section">
+        <div class="container">
+            <div class="facilitator-content">
+                <div class="facilitator-image">
+                    <img src="photo.png" alt="Your Sprint Partner">
+                </div>
+                <div class="facilitator-text">
+                    <h2>I am your Sprint Partner</h2>
+                    <p class="facilitator-bio">
+                        I started this sprint because I love experimenting - and I'm a team player. I move faster and think better when I'm not doing things alone.
+                    </p>
+                    <p class="facilitator-bio">
+                        For years, I've led Data and AI initiatives in corporate environments, building solutions that drove hundreds of millions of dollars in business value. At some point, I asked myself: if I can do this for big companies, can I do the same for a small project of my own - just following the same methodology that corporations use to build new products?
+                    </p>
+                    <p class="facilitator-bio">
+                        <strong>That's how this sprint was born.</strong>
+                    </p>
+                    <p class="facilitator-bio">
+                        I'm inviting you to work with me in the same room for 2–3 hours a day, over 10 days within one month. We'll work side by side, going through practical exercises together - defining which idea to pursue, thinking through a financial model, and using AI tools to create images, websites, and so much more.
+                    </p>
+                    <p class="facilitator-bio">
+                        This isn't a course. It's focused time with examples, facilitation, and protected space to take the right steps toward building a business - doing the work together, but each on our own project.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             <h2 class="text-center">Choose Your Path</h2>
             <p class="pricing-subtitle text-center">Maximum accountability, structured self-paced, or free exploration. All roads lead to launch.</p>
             
+            <div class="pricing-slider-wrapper">
             <div class="pricing-slider">
                 <!-- Live Sprint - Featured -->
                 <div class="pricing-slide featured">
@@ -1128,7 +1382,7 @@
                         <div class="pricing-tier">Live Cohort</div>
                         <div class="pricing-name">Live Sprint</div>
                         <div class="pricing-price" id="livePrice">$99</div>
-                        <p class="pricing-description">10 live group sessions with real-time feedback and accountability.</p>
+                        <p class="pricing-description">Access to 10 live group sessions with real-time feedback and accountability.</p>
                     </div>
                     <div class="slide-right">
                         <ul class="pricing-features">
@@ -1193,29 +1447,16 @@
                             <li>Unsubscribe anytime</li>
                         </ul>
                         <div class="slide-actions">
-                            <form class="email-form" onsubmit="return handleEmailSubmit(event)">
-                                <input type="email" class="email-input" placeholder="your@email.com" required>
+                            <form class="email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="return handleEmailSubmit(event)">
+                                <input type="email" name="email" class="email-input" placeholder="your@email.com" required>
+                                <input type="hidden" name="status" value="New">
+                                <input type="hidden" name="source" value="Daily Tasks Email Signup">
                                 <button type="submit" class="btn btn-primary">Start Free</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-
-    <!-- Facilitator Section -->
-    <section class="facilitator-section">
-        <div class="container">
-            <div class="facilitator-content">
-                <div class="facilitator-image">[Your Photo]</div>
-                <div class="facilitator-text">
-                    <h2>I am your Sprint Partner</h2>
-                    <p class="facilitator-bio">
-                        I started this sprint because I love experimenting and I do my best work when I'm surrounded by others doing the same. Every cohort, I build alongside you—working on my own projects while facilitating. When you're stuck, we figure it out together. When you ship, we celebrate together.
-                    </p>
-                </div>
             </div>
         </div>
     </section>
@@ -1282,12 +1523,41 @@
             element.classList.toggle('open');
         }
         
-        // Email form handler
+        // Email form handler - works with Formspree
         function handleEmailSubmit(event) {
+            const form = event.target;
+            const email = form.querySelector('input[type="email"]').value;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitBtn.textContent = 'Signing up...';
+            submitBtn.disabled = true;
+            
+            // Submit to Formspree via fetch for better UX
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success - show confirmation
+                    form.innerHTML = '<p style="color: var(--accent); font-weight: 600; padding: 10px 0;">Thanks! Check your inbox for Day 1.</p>';
+                    console.log('New subscriber:', email);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                // Error - reset button
+                submitBtn.textContent = 'Start Free';
+                submitBtn.disabled = false;
+                alert('Something went wrong. Please try again.');
+                console.error('Form error:', error);
+            });
+            
+            // Prevent default form submission
             event.preventDefault();
-            const email = event.target.querySelector('input').value;
-            // Replace with your email service integration
-            alert('Thanks! Check your inbox for Day 1.');
             return false;
         }
     </script>

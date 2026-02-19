@@ -14,6 +14,7 @@ A complete package for running a 10-day business launch sprint, including a land
 | `sprint-copy.md` | All landing page copy in one document for easy editing |
 | `design-specs.md` | Design system and visual specifications |
 | `assets-needed.md` | List of assets needed before launch |
+| `email-subscribers.csv` | Email tracking template (backup/manual tracking) |
 | `index.html` | Original workbook-focused landing page (legacy) |
 
 ### Workbook & Templates
@@ -49,14 +50,12 @@ All landing page text is in `sprint-copy.md`. Edit there, then update the HTML.
 
 The `sprint-landing.html` page includes:
 
-1. **Hero Section** - Main headline + primary CTA + secondary options
-2. **Who Benefits** - 3-column personas + "Why Now" message
-3. **10 Days to Launch** - Timeline + outcomes list
-4. **Pricing** - Three tiers with promo code support
-5. **Social Proof** - Testimonials
-6. **Facilitator** - Personal intro
-7. **FAQ** - Collapsible questions
-8. **Final CTA** - Conversion section
+1. **Hero Section** - "Stop Planning. Do now." headline + primary CTA + secondary options
+2. **10 Days to Launch** - Day-by-day grid showing sprint content
+3. **Who Benefits** - Problem-focused cards + "Why Now" AI/community banner
+4. **Pricing** - Horizontal slider with three tiers (Live $99, Workbook $17, Free emails)
+5. **Facilitator** - Personal intro and sprint story
+6. **Final CTA** - Conversion section with all options
 
 ### Promo Codes
 
@@ -157,15 +156,67 @@ Edit the `.cover-logo` section in `design-sprint-workbook.html`.
 
 ---
 
+## Email Collection Setup (Formspree)
+
+The landing page uses [Formspree](https://formspree.io) for automatic email collection. Emails are automatically saved to your Formspree dashboard where you can export them as CSV/Excel.
+
+### Setup Instructions
+
+1. **Create Formspree Account**
+   - Go to [formspree.io](https://formspree.io) and sign up (free tier: 50 submissions/month)
+   - Click "New Form" and name it "Sprint Email Signups"
+
+2. **Get Your Form ID**
+   - After creating the form, you'll get an endpoint like: `https://formspree.io/f/xyzabcde`
+   - Copy the form ID (the part after `/f/`, e.g., `xyzabcde`)
+
+3. **Update the Landing Page**
+   - Open `sprint-landing.html`
+   - Find: `action="https://formspree.io/f/YOUR_FORM_ID"`
+   - Replace `YOUR_FORM_ID` with your actual form ID
+
+4. **Test the Form**
+   - Open the landing page in a browser
+   - Submit a test email
+   - Check your Formspree dashboard - you should see the submission
+
+### Managing Subscribers
+
+| Action | How To |
+|--------|--------|
+| View all emails | Log into Formspree dashboard |
+| Export to Excel | Dashboard → Your Form → Export → CSV |
+| Get email notifications | Dashboard → Your Form → Settings → Email notifications |
+| Connect to Mailchimp | Dashboard → Your Form → Plugins → Mailchimp |
+
+### Email Data Fields
+
+Each submission includes:
+- `email` - Subscriber's email address
+- `status` - "New" (for your tracking)
+- `source` - "Daily Tasks Email Signup"
+- Timestamp (automatic)
+
+### Alternative Services
+
+If you prefer other services:
+- **Getform.io** - Similar to Formspree, generous free tier
+- **Netlify Forms** - Free if hosting on Netlify
+- **Google Forms** - Free, integrates with Google Sheets
+
+---
+
 ## Before Launch Checklist
 
 - [ ] Replace `[Your Name]` with facilitator name
 - [ ] Update cohort date in hero badge
 - [ ] Add facilitator photo
+- [ ] **Set up Formspree** (see Email Collection Setup above)
+- [ ] Replace `YOUR_FORM_ID` in sprint-landing.html
 - [ ] Set up payment links (Stripe/Gumroad)
-- [ ] Connect email form to ConvertKit/Mailchimp
 - [ ] Add real testimonials when available
 - [ ] Test promo codes
+- [ ] Test email signup form
 
 ---
 
@@ -178,10 +229,11 @@ Business sprint ideation cursor learning/
 ├── sprint-copy.md               # Landing page copy document
 ├── design-specs.md              # Design specifications
 ├── assets-needed.md             # Assets checklist
+├── email-subscribers.csv        # Email tracking template (for manual backup)
 ├── design-sprint-workbook.html  # Complete workbook
 ├── sprint-facilitator.md        # AI agent prompt
 ├── index.html                   # Legacy landing page
-├── copy-document.md             # Legacy copy document
+├── copy-document-LEGACY.md      # Legacy copy document
 ├── templates/                   # Standalone templates
 │   ├── 01-problem-statement-canvas.html
 │   ├── 02-customer-persona.html
