@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10-Day Business Launch Sprint | From Idea to Launch</title>
-    <meta name="description" content="Stop planning. Start building. Join a 10-day sprint that ends with your business actually launched.">
+    <title>10-Day Business Launch Sprint | Stop Planning. Start Launching.</title>
+    <meta name="description" content="From idea to live business in 10 working days. Join the sprint live, work through the workbook, or start free.">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -24,6 +24,7 @@
             --gray-800: #262626;
             --accent: #FF6B35;
             --accent-hover: #E55A2B;
+            --success: #10B981;
             
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             
@@ -60,15 +61,8 @@
             padding: 0 var(--space-md);
         }
         
-        .container-narrow {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-        
         .text-center { text-align: center; }
         .text-gray { color: var(--gray-500); }
-        .text-small { font-size: 14px; }
         
         /* ===== TYPOGRAPHY ===== */
         h1, h2, h3, h4 {
@@ -143,6 +137,11 @@
             font-size: 18px;
         }
         
+        .btn-sm {
+            padding: 12px 24px;
+            font-size: 14px;
+        }
+        
         /* ===== NAVIGATION ===== */
         .nav {
             position: fixed;
@@ -169,6 +168,12 @@
             font-size: 20px;
             color: var(--black);
             text-decoration: none;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
         }
         
         .nav-cta {
@@ -209,126 +214,459 @@
             margin-bottom: var(--space-lg);
         }
         
-        .hero-buttons {
+        .hero-cta-row {
             display: flex;
-            gap: var(--space-sm);
+            align-items: center;
+            gap: var(--space-lg);
             flex-wrap: wrap;
         }
         
-        /* ===== PAIN POINTS SECTION ===== */
-        .pain-section {
-            padding: var(--space-2xl) 0;
+        .hero-alternatives-inline {
+            font-size: 15px;
+            color: var(--gray-600);
+        }
+        
+        .hero-alternatives-inline p {
+            margin-bottom: 4px;
+            color: var(--gray-500);
+            font-size: 14px;
+        }
+        
+        .hero-alt-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .hero-alt-links span {
+            color: var(--gray-300);
+        }
+        
+        .hero-alt-link {
+            color: var(--black);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .hero-alt-link:hover {
+            color: var(--accent);
+        }
+        
+        /* ===== BUSINESS EXAMPLES SECTION ===== */
+        .business-examples {
+            padding: var(--space-xl) 0;
+            background: var(--white);
+            overflow: hidden;
+        }
+        
+        .business-examples h2 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: var(--space-xs);
+            letter-spacing: -0.02em;
+        }
+        
+        .business-examples-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto var(--space-lg);
+        }
+        
+        .examples-slider-wrapper {
+            position: relative;
+        }
+        
+        .examples-slider-wrapper::after {
+            content: "Scroll";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(to left, var(--white) 70%, transparent);
+            padding: 20px 10px 20px 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-400);
+            pointer-events: none;
+            letter-spacing: 1px;
+        }
+        
+        .examples-slider {
+            display: flex;
+            gap: var(--space-md);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: var(--space-sm) var(--space-md);
+            padding-right: 100px;
+            scrollbar-width: none;
+        }
+        
+        .examples-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .example-card {
+            flex-shrink: 0;
+            width: 340px;
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .example-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .example-card-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transition: transform 0.6s ease;
+        }
+        
+        .example-card:hover .example-card-bg {
+            transform: scale(1.02);
+        }
+        
+        .example-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-md);
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+            color: var(--white);
+        }
+        
+        .example-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        
+        .example-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.4;
+            font-weight: 400;
+        }
+        
+        /* Premium gradient backgrounds for each card (fallbacks when no image) */
+        .example-card.product .example-card-bg {
+            background-color: #8B2942;
+        }
+        
+        .example-card.digital .example-card-bg {
+            background-color: #1A1A2E;
+            background-size: 100% auto !important;
+            background-position: center center !important;
+        }
+        
+        .example-card.food .example-card-bg {
+            background-color: #4A6741;
+        }
+        
+        .example-card.dance .example-card-bg {
+            background-color: #E8E8E8;
+        }
+        
+        .example-card.consulting .example-card-bg {
+            background-color: #2C3E50;
+        }
+        
+        .example-card.creative .example-card-bg {
+            background-color: #6B4984;
+        }
+        
+        .example-card.education .example-card-bg {
+            background-color: #1E5F74;
+        }
+        
+        .example-card.youridea .example-card-bg {
+            background: linear-gradient(135deg, var(--accent) 0%, #FF8F5C 50%, #FFB088 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .example-card {
+                width: 300px;
+                height: 400px;
+            }
+            
+            .example-card h3 {
+                font-size: 24px;
+            }
+            
+            .examples-slider-wrapper::after {
+                display: none;
+            }
+        }
+        
+        /* ===== WHO BENEFITS SECTION ===== */
+        .benefits-section {
+            padding: var(--space-xl) 0;
             background: var(--gray-50);
         }
         
-        .pain-section h2 {
+        .benefits-section h2 {
+            margin-bottom: var(--space-xs);
+            font-size: clamp(28px, 4vw, 40px);
+        }
+        
+        .benefits-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--gray-500);
             margin-bottom: var(--space-lg);
         }
         
-        .pain-grid {
+        .problems-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-md);
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
             margin-bottom: var(--space-lg);
         }
         
-        .pain-card {
+        .problem-card {
             background: var(--white);
             padding: var(--space-lg);
-            border-radius: 12px;
-            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            border: 2px solid var(--gray-200);
+            position: relative;
         }
         
-        .pain-card h3 {
-            font-size: 24px;
+        .problem-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .problem-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .problem-card h3 {
+            font-size: 22px;
+            font-weight: 800;
             margin-bottom: var(--space-sm);
             color: var(--black);
+            line-height: 1.3;
         }
         
-        .pain-card p {
-            font-size: 16px;
+        .problem-card .pain-points {
+            list-style: none;
+            margin-bottom: var(--space-md);
         }
         
-        .pain-transition {
-            font-size: 24px;
+        .problem-card .pain-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--gray-600);
+            margin-bottom: 10px;
+        }
+        
+        .problem-card .pain-points li::before {
+            content: "→";
+            color: var(--gray-400);
+            flex-shrink: 0;
+        }
+        
+        .problem-card .solution-text {
+            font-size: 15px;
             font-weight: 600;
             color: var(--black);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.4;
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--gray-200);
         }
         
-        /* ===== WHAT YOU GET SECTION ===== */
+        .why-now-banner {
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            border-radius: 20px;
+            padding: var(--space-lg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+        
+        .why-now-content h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .why-now-content h3 span {
+            color: var(--accent);
+        }
+        
+        .why-now-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--gray-300);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .why-now-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .why-now-features {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .why-now-feature {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: rgba(255,255,255,0.08);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 12px;
+        }
+        
+        .why-now-feature .feature-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .why-now-feature .feature-text {
+            flex: 1;
+        }
+        
+        .why-now-feature .feature-text strong {
+            display: block;
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+        
+        .why-now-feature .feature-text span {
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 900px) {
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .why-now-banner {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .why-now strong {
+            color: var(--black);
+        }
+        
+        /* ===== VALUE SECTION ===== */
         .value-section {
-            padding: var(--space-2xl) 0;
+            padding: var(--space-xl) 0;
             background: var(--black);
             color: var(--white);
         }
         
         .value-section h2 {
-            margin-bottom: var(--space-lg);
-        }
-        
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-md);
-            margin-bottom: var(--space-xl);
-        }
-        
-        .timeline-item {
-            padding: var(--space-md);
-            border-left: 3px solid var(--accent);
-            padding-left: var(--space-md);
-        }
-        
-        .timeline-days {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
             margin-bottom: var(--space-xs);
         }
         
-        .timeline-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--white);
+        .value-subtitle {
+            color: var(--gray-400);
+            font-size: 18px;
+            margin-bottom: var(--space-lg);
         }
         
-        .outcomes {
+        .days-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-md);
-        }
-        
-        .outcome-item {
-            display: flex;
-            align-items: flex-start;
+            grid-template-columns: repeat(5, 1fr);
             gap: var(--space-sm);
         }
         
-        .outcome-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--accent);
-            border-radius: 50%;
-            flex-shrink: 0;
+        .day-card {
+            background: var(--gray-800);
+            border-radius: 12px;
+            padding: var(--space-md);
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
+            flex-direction: column;
+            gap: var(--space-sm);
+            transition: transform 0.2s ease, background 0.2s ease;
         }
         
-        .outcome-text {
-            color: var(--gray-300);
-            font-size: 16px;
+        .day-card:hover {
+            transform: translateY(-4px);
+            background: var(--gray-700);
+        }
+        
+        .day-card.featured {
+            background: var(--accent);
+        }
+        
+        .day-card.featured:hover {
+            background: var(--accent-hover);
+        }
+        
+        .day-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .day-card.featured .day-number {
+            color: var(--white);
+        }
+        
+        .day-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+        
+        .day-desc {
+            font-size: 12px;
+            color: var(--gray-400);
+            line-height: 1.4;
+        }
+        
+        .day-card.featured .day-desc {
+            color: rgba(255, 255, 255, 0.8);
         }
         
         /* ===== PRICING SECTION ===== */
         .pricing-section {
-            padding: var(--space-2xl) 0;
+            padding: var(--space-xl) 0;
             background: var(--white);
         }
         
@@ -337,95 +675,153 @@
         }
         
         .pricing-subtitle {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--gray-500);
-            margin-bottom: var(--space-xl);
+            margin-bottom: var(--space-lg);
         }
         
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        .pricing-slider-wrapper {
+            position: relative;
+        }
+        
+        .pricing-slider-wrapper::after {
+            content: "→";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(to left, var(--white) 60%, transparent);
+            padding: 20px 10px 20px 40px;
+            font-size: 24px;
+            color: var(--accent);
+            pointer-events: none;
+            animation: pulse-arrow 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-arrow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        .pricing-slider {
+            display: flex;
+            flex-direction: row;
             gap: var(--space-md);
-            align-items: stretch;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: var(--space-sm);
+            padding-right: 60px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--gray-100);
         }
         
-        .pricing-card {
+        .pricing-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .pricing-slider::-webkit-scrollbar-track {
+            background: var(--gray-100);
+            border-radius: 4px;
+        }
+        
+        .pricing-slider::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+        
+        .pricing-slide {
+            display: flex;
+            flex-direction: row;
+            min-width: 680px;
+            max-width: 680px;
             border: 2px solid var(--gray-200);
             border-radius: 16px;
-            padding: var(--space-lg);
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            overflow: hidden;
             background: var(--white);
+            position: relative;
+            scroll-snap-align: start;
+            flex-shrink: 0;
         }
         
-        .pricing-card.featured {
-            border-color: var(--black);
-            transform: scale(1.02);
+        .pricing-slide.featured {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.12);
+        }
+        
+        .slide-left {
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-right: 1px solid var(--gray-200);
+            position: relative;
+            min-width: 240px;
+            max-width: 240px;
+        }
+        
+        .pricing-slide.featured .slide-left {
+            background: linear-gradient(135deg, #FFF5F2 0%, #FFECE5 100%);
+        }
+        
+        .slide-right {
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            flex: 1;
         }
         
         .pricing-badge {
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--black);
+            top: var(--space-sm);
+            right: var(--space-sm);
+            background: var(--accent);
             color: var(--white);
-            padding: 6px 16px;
+            padding: 4px 10px;
             border-radius: 100px;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         .pricing-tier {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--gray-500);
-            margin-bottom: var(--space-xs);
+            margin-bottom: 4px;
         }
         
         .pricing-name {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-xs);
         }
         
         .pricing-price {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 900;
             margin-bottom: var(--space-xs);
         }
         
-        .pricing-price span {
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--gray-500);
-        }
-        
         .pricing-description {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--gray-500);
-            margin-bottom: var(--space-md);
-            padding-bottom: var(--space-md);
-            border-bottom: 1px solid var(--gray-200);
+            line-height: 1.5;
         }
         
         .pricing-features {
             list-style: none;
-            margin-bottom: var(--space-lg);
-            flex-grow: 1;
+            flex: 1;
         }
         
         .pricing-features li {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-            font-size: 15px;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
             color: var(--gray-700);
         }
         
@@ -436,21 +832,106 @@
             flex-shrink: 0;
         }
         
-        .pricing-for {
-            font-size: 14px;
-            color: var(--gray-500);
-            margin-bottom: var(--space-md);
+        .slide-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            min-width: 200px;
         }
         
-        .pricing-for strong {
-            color: var(--black);
-        }
-        
-        .pricing-card .btn {
+        .slide-actions .btn {
             width: 100%;
         }
         
-        /* Email form in free tier */
+        /* Promo Code Section */
+        .promo-section {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .promo-toggle {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: var(--font-sans);
+            padding: 0;
+        }
+        
+        .promo-toggle:hover {
+            color: var(--black);
+        }
+        
+        .promo-form {
+            display: none;
+            gap: 8px;
+            margin-top: var(--space-xs);
+        }
+        
+        .promo-form.visible {
+            display: flex;
+        }
+        
+        .promo-input {
+            flex: 1;
+            padding: 10px 14px;
+            font-size: 14px;
+            border: 2px solid var(--gray-200);
+            border-radius: 6px;
+            font-family: var(--font-sans);
+        }
+        
+        .promo-input:focus {
+            outline: none;
+            border-color: var(--black);
+        }
+        
+        .promo-apply {
+            padding: 10px 16px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+        
+        .promo-apply:hover {
+            background: var(--gray-200);
+        }
+        
+        .promo-success {
+            display: none;
+            margin-top: var(--space-sm);
+            padding: 10px 14px;
+            background: #ECFDF5;
+            border-radius: 6px;
+            color: var(--success);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .promo-success.visible {
+            display: block;
+        }
+        
+        .promo-error {
+            display: none;
+            margin-top: var(--space-sm);
+            padding: 10px 14px;
+            background: #FEF2F2;
+            border-radius: 6px;
+            color: #DC2626;
+            font-size: 14px;
+        }
+        
+        .promo-error.visible {
+            display: block;
+        }
+        
+        /* Email form */
         .email-form {
             display: flex;
             flex-direction: column;
@@ -470,10 +951,66 @@
             border-color: var(--black);
         }
         
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-section {
+            padding: var(--space-xl) 0;
+            background: var(--gray-50);
+        }
+        
+        .comparison-table {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .comparison-table th {
+            background: var(--black);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+        
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .dash {
+            color: var(--gray-300);
+        }
+        
         /* ===== SOCIAL PROOF SECTION ===== */
         .social-section {
             padding: var(--space-2xl) 0;
-            background: var(--gray-50);
+            background: var(--white);
         }
         
         .social-section h2 {
@@ -487,7 +1024,7 @@
         }
         
         .testimonial {
-            background: var(--white);
+            background: var(--gray-50);
             padding: var(--space-lg);
             border-radius: 12px;
             border: 1px solid var(--gray-200);
@@ -532,14 +1069,16 @@
         /* ===== FACILITATOR SECTION ===== */
         .facilitator-section {
             padding: var(--space-2xl) 0;
-            background: var(--white);
+            background: var(--gray-50);
         }
         
         .facilitator-content {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 350px 1fr;
             gap: var(--space-xl);
-            align-items: center;
+            align-items: start;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         @media (max-width: 768px) {
@@ -547,60 +1086,50 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+            
+            .facilitator-image {
+                margin: 0 auto;
+            }
         }
         
         .facilitator-image {
-            width: 300px;
-            height: 300px;
-            background: var(--gray-100);
+            width: 350px;
+            height: auto;
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--gray-400);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .facilitator-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         .facilitator-text h2 {
             margin-bottom: var(--space-sm);
-        }
-        
-        .facilitator-name {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: var(--space-md);
+            font-size: 32px;
         }
         
         .facilitator-bio {
-            font-size: 18px;
-            margin-bottom: var(--space-md);
-            max-width: 600px;
-        }
-        
-        .facilitator-credentials {
-            list-style: none;
-        }
-        
-        .facilitator-credentials li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-            font-size: 16px;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: var(--space-sm);
             color: var(--gray-600);
         }
         
-        .facilitator-credentials li::before {
-            content: "→";
-            font-weight: 700;
-            color: var(--accent);
+        .facilitator-bio:last-child {
+            margin-bottom: 0;
+        }
+        
+        .facilitator-bio strong {
+            color: var(--black);
         }
         
         /* ===== FAQ SECTION ===== */
         .faq-section {
             padding: var(--space-2xl) 0;
-            background: var(--gray-50);
+            background: var(--white);
         }
         
         .faq-section h2 {
@@ -613,7 +1142,7 @@
         }
         
         .faq-item {
-            background: var(--white);
+            background: var(--gray-50);
             border: 1px solid var(--gray-200);
             border-radius: 12px;
             margin-bottom: var(--space-sm);
@@ -635,12 +1164,22 @@
             font-size: 24px;
             font-weight: 300;
             color: var(--gray-400);
+            transition: transform 0.2s;
+        }
+        
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
         }
         
         .faq-answer {
             padding: 0 var(--space-md) var(--space-md);
             color: var(--gray-600);
             line-height: 1.7;
+            display: none;
+        }
+        
+        .faq-item.open .faq-answer {
+            display: block;
         }
         
         /* ===== FINAL CTA SECTION ===== */
@@ -665,25 +1204,25 @@
         
         .final-cta-buttons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             gap: var(--space-sm);
+            flex-wrap: wrap;
         }
         
-        .final-cta .text-link {
-            color: var(--gray-400);
-            text-decoration: underline;
-            font-size: 16px;
-        }
-        
-        .final-cta .text-link:hover {
+        .final-cta .btn-outline {
+            border-color: var(--white);
             color: var(--white);
+        }
+        
+        .final-cta .btn-outline:hover {
+            background: var(--white);
+            color: var(--black);
         }
         
         /* ===== FOOTER ===== */
         .footer {
             padding: var(--space-lg) 0;
-            background: var(--gray-900);
+            background: var(--gray-800);
             color: var(--gray-400);
             text-align: center;
             font-size: 14px;
@@ -715,16 +1254,69 @@
                 padding-bottom: 80px;
             }
             
-            .pricing-card.featured {
-                transform: none;
-            }
-            
-            .hero-buttons {
+            .pricing-slide {
                 flex-direction: column;
+                min-width: 300px;
+                max-width: 300px;
             }
             
-            .hero-buttons .btn {
+            .pricing-slide .slide-left {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+                min-width: auto;
+                max-width: none;
+            }
+            
+            .pricing-slider-wrapper::after {
+                padding: 15px 5px 15px 30px;
+                font-size: 20px;
+            }
+            
+            .slide-left {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+            }
+            
+            .slide-right {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .slide-actions {
+                min-width: auto;
+            }
+            
+            .hero-cta-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+            }
+            
+            .hero-cta-row .btn {
                 width: 100%;
+            }
+            
+            .final-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .final-cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .personas-row {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+            
+            .days-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .day-card:last-child {
+                grid-column: span 2;
             }
         }
     </style>
@@ -734,7 +1326,10 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="#" class="nav-logo">10-Day Sprint</a>
-            <a href="#pricing" class="btn btn-primary nav-cta">Join the Sprint</a>
+            <div class="nav-buttons">
+                <a href="mailto:olgamzhurova@gmail.com" class="btn btn-outline nav-cta">Ask a question</a>
+                <a href="#pricing" class="btn btn-primary nav-cta">Get Started</a>
+            </div>
         </div>
     </nav>
 
@@ -742,204 +1337,248 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-badge">Next cohort starts February 2025</span>
-                <h1>From Idea to Launched Business in 10 Days</h1>
-                <p class="lead">Stop planning. Start building. Join a sprint that ends with your business actually launched-not just another plan collecting dust.</p>
-                <div class="hero-buttons">
-                    <a href="#pricing" class="btn btn-accent btn-lg">Join the Sprint - $297</a>
-                    <a href="#pricing" class="btn btn-outline btn-lg">Start Free</a>
+                <span class="hero-badge">Next cohort: March 2026</span>
+                <h1>Stop Planning.<br>Do now.</h1>
+                <p class="lead">From idea to live business in 10 working days within a month. Join a community of business creators doing it together  -  with AI on your side.</p>
+                <div class="hero-cta-row">
+                    <a href="#pricing" class="btn btn-accent btn-lg">Join the Sprint - $149</a>
+                    <div class="hero-alternatives-inline">
+                        <p>Not ready to commit yet?</p>
+                        <div class="hero-alt-links">
+                            <a href="#pricing" class="hero-alt-link">Free email tasks</a>
+                            <span>|</span>
+                            <a href="#pricing" class="hero-alt-link">$25 workbook</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pain Points Section -->
-    <section class="pain-section">
+    <!-- Business Examples Section -->
+    <section class="business-examples">
         <div class="container">
-            <h2 class="text-center">You Have Ideas.<br>What You Need Is Action.</h2>
-            
-            <div class="pain-grid">
-                <div class="pain-card">
-                    <h3>"I have too many ideas"</h3>
-                    <p>You start excited, then get overwhelmed. Nothing gets finished. You jump from idea to idea, never committing long enough to see results.</p>
+            <h2>You can come with any idea</h2>
+            <p class="business-examples-subtitle">We'll work through ideas together to see what makes sense to grow into the business.</p>
+        </div>
+        
+        <div class="examples-slider-wrapper">
+            <div class="examples-slider">
+                <!-- Product Brand -->
+                <div class="example-card product">
+                    <div class="example-card-bg" style="background-image: url('Product%20Brand.PNG');"></div>
+                    <div class="example-card-content">
+                        <h3>Product Brand</h3>
+                        <p>Launch your product line</p>
+                    </div>
                 </div>
                 
-                <div class="pain-card">
-                    <h3>"I work alone"</h3>
-                    <p>No one to push you forward. No one to review your work. No one to celebrate wins with-or pick you up when things get hard.</p>
+                <!-- Digital Service -->
+                <div class="example-card digital">
+                    <div class="example-card-bg" style="background-image: url('digital%20services.jpg');"></div>
+                    <div class="example-card-content">
+                        <h3>Digital Service</h3>
+                        <p>Build a service business online</p>
+                    </div>
                 </div>
                 
-                <div class="pain-card">
-                    <h3>"I don't know where to start"</h3>
-                    <p>Business plans, MVPs, marketing, legal stuff... it all feels too big. So you keep researching instead of doing.</p>
+                <!-- Food Brand -->
+                <div class="example-card food">
+                    <div class="example-card-bg" style="background-image: url('food-brand.jpg');"></div>
+                    <div class="example-card-content">
+                        <h3>Food Brand</h3>
+                        <p>Turn your recipes into a real business</p>
+                    </div>
+                </div>
+                
+                <!-- Dance Studio -->
+                <div class="example-card dance">
+                    <div class="example-card-bg" style="background-image: url('Dance%20Studio.jpg');"></div>
+                    <div class="example-card-content">
+                        <h3>Dance Studio</h3>
+                        <p>Share your passion, build your community</p>
+                    </div>
+                </div>
+                
+                <!-- Consulting & Advisory -->
+                <div class="example-card consulting">
+                    <div class="example-card-bg" style="background-image: url('consulting.jpg');"></div>
+                    <div class="example-card-content">
+                        <h3>Consulting & Advisory</h3>
+                        <p>Package your corporate expertise</p>
+                    </div>
+                </div>
+                
+                <!-- Creative Business -->
+                <div class="example-card creative">
+                    <div class="example-card-bg" style="background-image: url('creative.jpg');"></div>
+                    <div class="example-card-content">
+                        <h3>Creative Business</h3>
+                        <p>Sell what you create</p>
+                    </div>
+                </div>
+                
+                <!-- Education -->
+                <div class="example-card education">
+                    <div class="example-card-bg" style="background-image: url('education.jpg');"></div>
+                    <div class="example-card-content">
+                        <h3>Education</h3>
+                        <p>Teach what you know</p>
+                    </div>
+                </div>
+                
+                <!-- Your Idea -->
+                <div class="example-card youridea">
+                    <div class="example-card-bg"></div>
+                    <div class="example-card-content">
+                        <h3>Your Idea</h3>
+                        <p>Something completely different? Bring it.</p>
+                    </div>
                 </div>
             </div>
-            
-            <p class="pain-transition text-center">
-                You don't need another course. You need momentum, structure, and a community building alongside you.
-            </p>
         </div>
     </section>
 
     <!-- What You Get Section -->
     <section class="value-section">
         <div class="container">
-            <h2 class="text-center">10 Days. One Goal.<br>A Launched Business.</h2>
+            <h2 class="text-center">10 Days to Launch</h2>
+            <p class="value-subtitle text-center">Here's what we'll work on together, day by day</p>
             
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-days">Days 1-3</div>
-                    <div class="timeline-title">Validate your idea with real customers</div>
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day-number">01</div>
+                    <div class="day-content">
+                        <div class="day-title">Find Your Idea</div>
+                        <div class="day-desc">Clarify what problem you're solving</div>
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-days">Days 4-6</div>
-                    <div class="timeline-title">Register your business, build your website</div>
+                <div class="day-card">
+                    <div class="day-number">02</div>
+                    <div class="day-content">
+                        <div class="day-title">Know Your Customer</div>
+                        <div class="day-desc">Define who you're helping and why they'd pay</div>
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-days">Days 7-9</div>
-                    <div class="timeline-title">Create content, set up marketing</div>
+                <div class="day-card">
+                    <div class="day-number">03</div>
+                    <div class="day-content">
+                        <div class="day-title">Design Your Offer</div>
+                        <div class="day-desc">Create what you'll actually sell</div>
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-days">Day 10</div>
-                    <div class="timeline-title">Launch publicly + pitch your business</div>
+                <div class="day-card">
+                    <div class="day-number">04</div>
+                    <div class="day-content">
+                        <div class="day-title">Set Your Price</div>
+                        <div class="day-desc">Build a business model that works</div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="outcomes">
-                <div class="outcome-item">
-                    <div class="outcome-icon">✓</div>
-                    <span class="outcome-text">Validated business idea with customer evidence</span>
+                <div class="day-card">
+                    <div class="day-number">05</div>
+                    <div class="day-content">
+                        <div class="day-title">Shape Your Brand</div>
+                        <div class="day-desc">Define how you'll look and sound</div>
+                    </div>
                 </div>
-                <div class="outcome-item">
-                    <div class="outcome-icon">✓</div>
-                    <span class="outcome-text">Registered legal entity</span>
+                <div class="day-card">
+                    <div class="day-number">06</div>
+                    <div class="day-content">
+                        <div class="day-title">Make It Official</div>
+                        <div class="day-desc">Register your business and set up tools</div>
+                    </div>
                 </div>
-                <div class="outcome-item">
-                    <div class="outcome-icon">✓</div>
-                    <span class="outcome-text">Live website capturing leads</span>
+                <div class="day-card">
+                    <div class="day-number">07</div>
+                    <div class="day-content">
+                        <div class="day-title">Build Your Home Online</div>
+                        <div class="day-desc">Create your website or page</div>
+                    </div>
                 </div>
-                <div class="outcome-item">
-                    <div class="outcome-icon">✓</div>
-                    <span class="outcome-text">First customers or users</span>
+                <div class="day-card">
+                    <div class="day-number">08</div>
+                    <div class="day-content">
+                        <div class="day-title">Plan Your Outreach</div>
+                        <div class="day-desc">Set up marketing and content</div>
+                    </div>
                 </div>
-                <div class="outcome-item">
-                    <div class="outcome-icon">✓</div>
-                    <span class="outcome-text">2-minute founder pitch</span>
+                <div class="day-card">
+                    <div class="day-number">09</div>
+                    <div class="day-content">
+                        <div class="day-title">Get Your First Sale</div>
+                        <div class="day-desc">Start selling and learn from it</div>
+                    </div>
+                </div>
+                <div class="day-card featured">
+                    <div class="day-number">10</div>
+                    <div class="day-content">
+                        <div class="day-title">Go Public</div>
+                        <div class="day-desc">Launch and share your story</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section" id="pricing">
+    <!-- Who Benefits Section -->
+    <section class="benefits-section">
         <div class="container">
-            <h2 class="text-center">Choose Your Path</h2>
-            <p class="pricing-subtitle text-center">Start free, go solo, or join the cohort. All roads lead to launch.</p>
+            <h2 class="text-center">Sound Familiar?</h2>
+            <p class="benefits-subtitle">This sprint is for people who recognize themselves here</p>
             
-            <div class="pricing-grid">
-                <!-- Free Tier -->
-                <div class="pricing-card">
-                    <div class="pricing-tier">Free</div>
-                    <div class="pricing-name">Daily Sprint Email</div>
-                    <div class="pricing-price">$0</div>
-                    <p class="pricing-description">One actionable task per day, delivered to your inbox. Build at your own pace.</p>
-                    
-                    <ul class="pricing-features">
-                        <li>10 days of guided tasks</li>
-                        <li>Key frameworks explained</li>
-                        <li>Build at your own pace</li>
-                        <li>Cancel anytime</li>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-label">You have a stable job, but...</div>
+                    <h3>You dream of building something of your own</h3>
+                    <ul class="pain-points">
+                        <li>Sunday nights, you feel the pull - there's an idea you can't stop thinking about</li>
+                        <li>You don't want to quit your job to "figure it out"</li>
+                        <li>You want a low-risk way to test if your idea has legs</li>
+                        <li>You're curious if corporate product methods could work for your side project</li>
                     </ul>
-                    
-                    <p class="pricing-for"><strong>Perfect for:</strong> Explorers testing if this approach works for them</p>
-                    
-                    <form class="email-form">
-                        <input type="email" class="email-input" placeholder="Enter your email" required>
-                        <button type="submit" class="btn btn-primary">Start Free</button>
-                    </form>
+                    <p class="solution-text">This sprint lets you test your idea in 10 days - without risking your income.</p>
                 </div>
                 
-                <!-- Workbook Tier -->
-                <div class="pricing-card">
-                    <div class="pricing-tier">Self-Paced</div>
-                    <div class="pricing-name">Sprint Workbook</div>
-                    <div class="pricing-price">$47</div>
-                    <p class="pricing-description">The complete 10-day framework with all templates, exercises, and case studies.</p>
-                    
-                    <ul class="pricing-features">
-                        <li>Complete 10-day framework</li>
-                        <li>All templates and canvases (PDF)</li>
-                        <li>Real company case studies</li>
-                        <li>Step-by-step exercises</li>
-                        <li>Lifetime access</li>
+                <div class="problem-card">
+                    <div class="problem-label">You have a business idea, but...</div>
+                    <h3>You can't seem to actually start</h3>
+                    <ul class="pain-points">
+                        <li>You've been thinking about this idea for months (or years)</li>
+                        <li>You're tired of endless planning, research, and "getting ready"</li>
+                        <li>You want structure, motivation, and a deadline that actually works</li>
+                        <li>You want to build something real - service, digital product, or physical</li>
                     </ul>
-                    
-                    <p class="pricing-for"><strong>Perfect for:</strong> Independent builders who want structure</p>
-                    
-                    <a href="#" class="btn btn-primary">Get the Workbook</a>
-                </div>
-                
-                <!-- Full Sprint Tier -->
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <div class="pricing-tier">Live Cohort</div>
-                    <div class="pricing-name">Full Sprint</div>
-                    <div class="pricing-price">$297</div>
-                    <p class="pricing-description">Join a small group. Build together. Launch together. With live facilitation.</p>
-                    
-                    <ul class="pricing-features">
-                        <li>Everything in Workbook</li>
-                        <li>10 live sessions with facilitator</li>
-                        <li>Small group (max 12 people)</li>
-                        <li>Real-time feedback on your business</li>
-                        <li>Accountability and community</li>
-                        <li>Build alongside the facilitator</li>
-                        <li>Alumni community access</li>
-                    </ul>
-                    
-                    <p class="pricing-for"><strong>Perfect for:</strong> Those who thrive with support and deadlines</p>
-                    
-                    <a href="#" class="btn btn-accent">Join the Sprint</a>
+                    <p class="solution-text">This sprint gives you the structure and community to finally ship.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="social-section">
-        <div class="container">
-            <h2 class="text-center">Built by Builders,<br>for Builders</h2>
             
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p class="testimonial-quote">"I'd been sitting on my idea for 18 months. In 10 days, I finally launched. The structure and accountability made all the difference."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">SK</div>
-                        <div>
-                            <div class="testimonial-name">Sarah K.</div>
-                            <div class="testimonial-role">Launched a coaching business</div>
+            <div class="why-now-banner">
+                <div class="why-now-content">
+                    <h3>Why <span>now</span> is the moment</h3>
+                    <p>Here's what changed: <strong>AI.</strong></p>
+                    <p>You don't need to quit your job. You don't need to hire a team. Many tasks that used to take weeks - writing copy, building websites, creating designs - AI can help you do in hours.</p>
+                    <p>The barriers that stopped you before? They're lower than ever. All you need is structure and people doing it alongside you.</p>
+                </div>
+                <div class="why-now-features">
+                    <div class="why-now-feature">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">
+                            <strong>AI as your co-builder</strong>
+                            <span>Handle manual tasks in hours, not weeks</span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial">
-                    <p class="testimonial-quote">"The best part? The facilitator was building their own product at the same time. It wasn't theory-it was real."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">MR</div>
-                        <div>
-                            <div class="testimonial-name">Marcus R.</div>
-                            <div class="testimonial-role">Launched a SaaS MVP</div>
+                    <div class="why-now-feature">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">
+                            <strong>Community of builders</strong>
+                            <span>People doing the exact same thing, right now</span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial">
-                    <p class="testimonial-quote">"I joined with a vague idea about 'something with sustainability.' Left with a registered business and my first 3 customers."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">JL</div>
-                        <div>
-                            <div class="testimonial-name">Jamie L.</div>
-                            <div class="testimonial-role">Launched an eco-product brand</div>
+                    <div class="why-now-feature">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-text">
+                            <strong>10-day structure</strong>
+                            <span>Clear steps, real deadlines, actual results</span>
                         </div>
                     </div>
                 </div>
@@ -951,66 +1590,135 @@
     <section class="facilitator-section">
         <div class="container">
             <div class="facilitator-content">
-                <div class="facilitator-image">[Your Photo Here]</div>
+                <div class="facilitator-image">
+                    <img src="Photo.png" alt="Your Sprint Partner">
+                </div>
                 <div class="facilitator-text">
-                    <h2>Your Sprint Partner</h2>
-                    <div class="facilitator-name">[Your Name] - Founder, Builder, Facilitator</div>
+                    <h2>I am your Sprint Partner</h2>
                     <p class="facilitator-bio">
-                        I've been where you are-full of ideas, unsure which to pursue. I created this sprint because I needed it myself. Every cohort, I build alongside you. I'm not just teaching theory; I'm launching my next business in real-time with you.
+                        I started this sprint because I love experimenting - and I'm a team player. I move faster and think better when I'm not doing things alone.
                     </p>
-                    <ul class="facilitator-credentials">
-                        <li>[X] years in [industry/field]</li>
-                        <li>Built and launched [notable projects]</li>
-                        <li>Currently building: [your current project]</li>
-                    </ul>
+                    <p class="facilitator-bio">
+                        For years, I've led Data and AI initiatives in corporate environments, building solutions that drove hundreds of millions of dollars in business value. At some point, I asked myself: if I can do this for big companies, can I do the same for a small project of my own - just following the same methodology that corporations use to build new products?
+                    </p>
+                    <p class="facilitator-bio">
+                        <strong>That's how this sprint was born.</strong>
+                    </p>
+                    <p class="facilitator-bio">
+                        I'm inviting you to work with me in the same room for 2–3 hours a day, over 10 days within one month. We'll work side by side, going through practical exercises together - defining which idea to pursue, thinking through a financial model, and using AI tools to create images, websites, and so much more.
+                    </p>
+                    <p class="facilitator-bio">
+                        This isn't a course. It's focused time with examples, facilitation, and protected space to take the right steps toward building a business - doing the work together, but each on our own project.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
         <div class="container">
-            <h2 class="text-center">Frequently Asked Questions</h2>
+            <h2 class="text-center">Choose Your Path</h2>
+            <p class="pricing-subtitle text-center">Maximum accountability, structured self-paced, or free exploration. All roads lead to launch.</p>
             
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">What if I don't have a clear idea yet?</div>
-                    <div class="faq-answer">Perfect. Day 1 is specifically about discovering and validating ideas. Many participants start with nothing more than "I want to build something" and leave with a launched business. The process helps you focus.</div>
+            <div class="pricing-slider-wrapper">
+            <div class="pricing-slider">
+                <!-- Live Sprint - Featured -->
+                <div class="pricing-slide featured">
+                    <div class="slide-left">
+                        <div class="pricing-badge">Best Value</div>
+                        <div class="pricing-tier">Live Cohort</div>
+                        <div class="pricing-name">Live Sprint</div>
+                        <div class="pricing-price" id="livePrice">$149</div>
+                        <p class="pricing-description">Access to 10 live group sessions with real-time feedback and accountability.</p>
+                    </div>
+                    <div class="slide-right">
+                        <ul class="pricing-features">
+                            <li>10 live sessions (2-3 hours each)</li>
+                            <li>Real-time feedback on your business</li>
+                            <li>Complete workbook + all templates</li>
+                            <li>Telegram community access</li>
+                            <li>Session recordings + Alumni network</li>
+                        </ul>
+                        <div class="slide-actions">
+                            <div class="promo-section">
+                                <button class="promo-toggle" onclick="togglePromo()">Participated before? Use your ID code</button>
+                                <div class="promo-form" id="promoForm">
+                                    <input type="text" class="promo-input" id="promoCode" placeholder="Enter code">
+                                    <button class="promo-apply" onclick="applyCode()">Apply</button>
+                                </div>
+                                <div class="promo-success" id="promoSuccess">Code accepted! Join free.</div>
+                                <div class="promo-error" id="promoError">Invalid code. Try again.</div>
+                            </div>
+                            <a href="#" class="btn btn-accent" id="liveCta">Join the Sprint - $149</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">How much time do I need?</div>
-                    <div class="faq-answer">Plan for 2-3 hours per day for the live sprint sessions, plus some independent work time. It's intensive by design-that's how we create momentum. If you're doing the self-paced workbook, you control your schedule.</div>
+                <!-- Workbook -->
+                <div class="pricing-slide">
+                    <div class="slide-left">
+                        <div class="pricing-tier">Self-Paced</div>
+                        <div class="pricing-name">Sprint Workbook</div>
+                        <div class="pricing-price">$25</div>
+                        <p class="pricing-description">The complete 10-day framework with all exercises and templates.</p>
+                    </div>
+                    <div class="slide-right">
+                        <ul class="pricing-features">
+                            <li>Complete 10-day framework (PDF + HTML)</li>
+                            <li>All 7 canvas templates</li>
+                            <li>15+ real company case studies</li>
+                            <li>Step-by-step exercises</li>
+                            <li>Print-optimized design</li>
+                            <li>Lifetime access</li>
+                        </ul>
+                        <div class="slide-actions">
+                            <a href="#" class="btn btn-primary">Get the Workbook - $25</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">What if I can't make all the live sessions?</div>
-                    <div class="faq-answer">Sessions are recorded and shared with participants. But honestly? The magic is in doing it live together. The accountability, real-time feedback, and energy of the group are hard to replicate async.</div>
+                <!-- Free Email -->
+                <div class="pricing-slide">
+                    <div class="slide-left">
+                        <div class="pricing-tier">Free</div>
+                        <div class="pricing-name">Daily Tasks Email</div>
+                        <div class="pricing-price">$0</div>
+                        <p class="pricing-description">Daily tasks delivered to your inbox for 10 days.</p>
+                    </div>
+                    <div class="slide-right">
+                        <ul class="pricing-features">
+                            <li>10 days of guided tasks</li>
+                            <li>Key frameworks explained</li>
+                            <li>Build at your own pace</li>
+                            <li>Unsubscribe anytime</li>
+                        </ul>
+                        <div class="slide-actions">
+                            <form class="email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="return handleEmailSubmit(event)">
+                                <input type="email" name="email" class="email-input" placeholder="your@email.com" required>
+                                <input type="hidden" name="status" value="New">
+                                <input type="hidden" name="source" value="Daily Tasks Email Signup">
+                                <button type="submit" class="btn btn-primary">Start Free</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Is this for digital or physical products?</div>
-                    <div class="faq-answer">Both. The framework works for apps, SaaS, services, physical products, and more. We've had participants launch everything from coaching businesses to e-commerce stores to software products.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What happens after the 10 days?</div>
-                    <div class="faq-answer">You'll have a launched business-that's the goal. But you'll also join our alumni community where past participants support each other, share wins, and continue building together.</div>
-                </div>
+            </div>
             </div>
         </div>
     </section>
+
 
     <!-- Final CTA Section -->
     <section class="final-cta">
         <div class="container">
             <h2>Your Business<br>Won't Build Itself</h2>
-            <p class="lead">Every day you wait is a day your idea stays an idea. The next sprint starts February 2025.</p>
+            <p class="lead">Choose your path. Start today.</p>
             
             <div class="final-cta-buttons">
-                <a href="#pricing" class="btn btn-accent btn-lg">Join the Sprint - $297</a>
-                <a href="#pricing" class="text-link">Not ready? Start with the free daily emails →</a>
+                <a href="#pricing" class="btn btn-accent btn-lg">Join Live Sprint - $149</a>
+                <a href="#pricing" class="btn btn-outline">Get Workbook - $25</a>
+                <a href="#pricing" class="btn btn-outline">Start Free</a>
             </div>
         </div>
     </section>
@@ -1018,14 +1726,87 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2025 10-Day Business Launch Sprint. Built with momentum.</p>
+            <p>© 2026 10-Day Business Launch Sprint. Built with momentum.</p>
         </div>
     </footer>
 
     <!-- Mobile Sticky CTA -->
     <div class="mobile-cta">
-        <a href="#pricing" class="btn btn-accent">Join the Sprint - $297</a>
+        <a href="#pricing" class="btn btn-accent">Join the Sprint - $149</a>
     </div>
 
+    <script>
+        // Promo code functionality
+        function togglePromo() {
+            const form = document.getElementById('promoForm');
+            form.classList.toggle('visible');
+        }
+        
+        function applyCode() {
+            const code = document.getElementById('promoCode').value.trim().toUpperCase();
+            const validCodes = ['FRIEND2026', 'LAUNCH', 'BETA', 'VIP'];
+            
+            const successEl = document.getElementById('promoSuccess');
+            const errorEl = document.getElementById('promoError');
+            const formEl = document.getElementById('promoForm');
+            const priceEl = document.getElementById('livePrice');
+            const ctaEl = document.getElementById('liveCta');
+            
+            if (validCodes.includes(code)) {
+                formEl.classList.remove('visible');
+                successEl.classList.add('visible');
+                errorEl.classList.remove('visible');
+                priceEl.innerHTML = '<s style="color: var(--gray-400);">$149</s> FREE';
+                ctaEl.textContent = 'Join Free';
+                ctaEl.href = '#'; // Update with free registration link
+            } else {
+                errorEl.classList.add('visible');
+                successEl.classList.remove('visible');
+            }
+        }
+        
+        // FAQ toggle
+        function toggleFaq(element) {
+            element.classList.toggle('open');
+        }
+        
+        // Email form handler - works with Formspree
+        function handleEmailSubmit(event) {
+            const form = event.target;
+            const email = form.querySelector('input[type="email"]').value;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitBtn.textContent = 'Signing up...';
+            submitBtn.disabled = true;
+            
+            // Submit to Formspree via fetch for better UX
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success - show confirmation
+                    form.innerHTML = '<p style="color: var(--accent); font-weight: 600; padding: 10px 0;">Thanks! Check your inbox for Day 1.</p>';
+                    console.log('New subscriber:', email);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                // Error - reset button
+                submitBtn.textContent = 'Start Free';
+                submitBtn.disabled = false;
+                alert('Something went wrong. Please try again.');
+                console.error('Form error:', error);
+            });
+            
+            // Prevent default form submission
+            event.preventDefault();
+            return false;
+        }
+    </script>
 </body>
 </html>
