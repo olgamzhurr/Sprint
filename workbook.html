@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Business Launch Sprint Workbook — Tone Ventures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── ACCESS GATE ── */
+#gate {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0B1628;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+}
+#gate::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.gate-card {
+  position: relative; z-index: 1;
+  background: #162240;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2.5rem;
+  width: 100%; max-width: 440px;
+  text-align: center;
+}
+.gate-logo {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700; font-size: 1rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: white; margin-bottom: 1.75rem;
+}
+.gate-logo span { color: #1A6EFA; }
+.gate-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.4rem; font-weight: 400;
+  color: white; line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+.gate-sub {
+  font-size: 0.82rem; color: rgba(255,255,255,0.4);
+  font-family: 'Manrope', sans-serif;
+  margin-bottom: 2rem; line-height: 1.6;
+}
+.gate-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  display: block; margin-bottom: 0.4rem;
+  text-align: left;
+}
+.gate-input {
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: white; font-family: 'Manrope', sans-serif;
+  font-size: 0.9rem; padding: 0.75rem 1rem;
+  outline: none; transition: border-color 0.2s;
+  margin-bottom: 0.75rem; letter-spacing: 0.06em;
+}
+.gate-input:focus { border-color: #1A6EFA; }
+.gate-btn {
+  width: 100%; background: #1A6EFA; color: white;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.9rem; border: none; cursor: pointer;
+  transition: background 0.2s; margin-bottom: 1rem;
+}
+.gate-btn:hover { background: #0F52CC; }
+.gate-error {
+  font-size: 0.78rem; color: #F87171;
+  font-family: 'Manrope', sans-serif;
+  margin-bottom: 0.75rem; display: none;
+}
+.gate-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 1.25rem 0;
+}
+.gate-buy {
+  font-size: 0.78rem; color: rgba(255,255,255,0.4);
+  font-family: 'Manrope', sans-serif;
+}
+.gate-buy a {
+  color: #1A6EFA; text-decoration: none; font-weight: 600;
+}
+.gate-buy a:hover { text-decoration: underline; }
+.gate-pdf-row {
+  display: flex; gap: 0.75rem; margin-top: 1rem;
+}
+.gate-pdf-btn {
+  flex: 1; background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.55);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.65rem; cursor: pointer;
+  transition: all 0.2s; text-decoration: none;
+  display: block; text-align: center;
+}
+.gate-pdf-btn:hover { border-color: #1A6EFA; color: #1A6EFA; }
+</style>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1628;--navy-mid:#162240;--navy-soft:#1E3058;
+  --white:#FFFFFF;--off-white:#F4F6F9;
+  --text:#0B1628;--text-soft:#4A5568;--text-faint:#8A97AA;
+  --accent:#1A6EFA;--accent-dark:#0F52CC;--accent-light:#EBF1FF;
+  --amber:#C8873A;--amber-light:#FDF3E7;
+  --green:#16A34A;--green-light:#F0FDF4;
+  --rule:#DDE3EC;--rule-dark:rgba(255,255,255,0.08);
+  --sidebar:260px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--off-white);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;display:flex;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar);background:var(--navy);position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:200;display:flex;flex-direction:column;transition:transform 0.3s}
+.sidebar-logo{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid var(--rule-dark)}
+.sidebar-logo a{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--white);text-decoration:none}
+.sidebar-logo a span{color:var(--accent)}
+.sidebar-back{font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;display:block;text-decoration:none}
+.sidebar-back:hover{color:rgba(255,255,255,0.6)}
+.progress-bar-wrap{padding:1rem 1.5rem;border-bottom:1px solid var(--rule-dark)}
+.progress-label{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.4rem}
+.progress-bar{height:3px;background:rgba(255,255,255,0.1);border-radius:2px}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s ease;width:0%}
+.progress-pct{font-size:0.65rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;text-align:right}
+.nav-section{padding:0.75rem 1.5rem 0.25rem}
+.nav-section-label{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
+.nav-item{display:block;padding:0.45rem 0.75rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;border-radius:3px;margin-bottom:0.1rem;transition:background 0.15s,color 0.15s;cursor:pointer}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.8)}
+.nav-item.active{background:rgba(26,110,250,0.2);color:var(--white);font-weight:600}
+.nav-item.completed::after{content:'✓';float:right;color:var(--accent);font-size:0.7rem}
+
+/* MAIN */
+.main{margin-left:var(--sidebar);flex:1;min-height:100vh}
+
+/* TOP BAR */
+.topbar{background:var(--white);border-bottom:1px solid var(--rule);padding:0.85rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-day{font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)}
+.topbar-title{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;color:var(--navy)}
+.topbar-nav{display:flex;gap:0.5rem}
+.topbar-btn{background:var(--off-white);border:1px solid var(--rule);color:var(--text-soft);font-size:0.72rem;font-weight:600;letter-spacing:0.05em;padding:0.45rem 1rem;cursor:pointer;transition:all 0.15s;font-family:'Manrope',sans-serif}
+.topbar-btn:hover{border-color:var(--accent);color:var(--accent)}
+.topbar-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--white)}
+.topbar-btn.primary:hover{background:var(--accent-dark)}
+
+/* PAGES */
+.page{display:none;padding:2.5rem;max-width:900px}
+.page.active{display:block}
+.page.active.cover-page{display:flex}
+
+/* COVER */
+.cover-page{background:var(--navy);min-height:calc(100vh - 49px);flex-direction:column;justify-content:center;padding:4rem 2.5rem;position:relative;overflow:hidden}
+.cover-page::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.cover-page::after{content:'';position:absolute;top:-20%;left:-10%;width:60%;height:120%;background:radial-gradient(ellipse at 30% 40%,rgba(26,110,250,0.15) 0%,transparent 65%);pointer-events:none}
+.cover-inner{position:relative;z-index:1;max-width:680px}
+.cover-tag{display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(26,110,250,0.3);padding:0.3rem 0.75rem;margin-bottom:2rem}
+.cover-headline{font-family:'Libre Baskerville',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;line-height:1.1;letter-spacing:-0.02em;color:var(--white);margin-bottom:1.5rem}
+.cover-headline em{font-style:italic;color:var(--accent)}
+.cover-sub{font-size:1rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.75;margin-bottom:3rem;max-width:500px}
+.cover-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.cover-meta-item strong{font-size:1.1rem;font-weight:700;color:var(--white);display:block;font-family:'Libre Baskerville',serif}
+.cover-meta-item span{font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase}
+.cover-divider{width:1px;background:rgba(255,255,255,0.1);align-self:stretch}
+
+/* PARTICIPANT CARD */
+.participant-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:1.75rem;margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.participant-field label{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:0.35rem}
+.participant-field input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.15);color:var(--white);font-family:'Manrope',sans-serif;font-size:0.875rem;padding:0.35rem 0;outline:none;transition:border-color 0.2s}
+.participant-field input:focus{border-bottom-color:var(--accent)}
+
+/* SECTION STYLES */
+.section-header{margin-bottom:2rem}
+.eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.eyebrow::before{content:'';display:inline-block;width:16px;height:2px;background:var(--accent)}
+h1.page-title{font-family:'Libre Baskerville',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;letter-spacing:-0.02em;color:var(--navy);line-height:1.15;margin-bottom:0.75rem}
+h2.section-title{font-family:'Libre Baskerville',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+h3.sub-title{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.page-intro{font-size:0.95rem;color:var(--text-soft);font-weight:300;line-height:1.75;max-width:640px;margin-bottom:2rem}
+
+/* AGENDA TABLE */
+.agenda{width:100%;border-collapse:collapse;font-size:0.8rem;margin-bottom:2rem}
+.agenda th{text-align:left;padding:0.6rem 0.75rem;background:var(--navy);color:rgba(255,255,255,0.6);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600}
+.agenda td{padding:0.6rem 0.75rem;border-bottom:1px solid var(--rule);color:var(--text-soft);vertical-align:top}
+.agenda td:first-child{font-weight:600;color:var(--text-faint);white-space:nowrap}
+.agenda td strong{color:var(--text)}
+.agenda tr:last-child td{border-bottom:none}
+
+/* FRAMEWORK BOX */
+.framework{background:var(--white);border:1px solid var(--rule);padding:1.5rem;margin:1.5rem 0}
+.framework-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem;display:block}
+.framework h3{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.framework p{font-size:0.85rem;color:var(--text-soft);font-weight:300;line-height:1.7}
+
+/* AI PROMPT BOX */
+.ai-box{background:var(--accent-light);border:1px solid rgba(26,110,250,0.2);border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0}
+.ai-box-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem}
+.ai-badge{font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:var(--accent);color:var(--white);padding:0.2rem 0.5rem}
+.ai-box-title{font-size:0.875rem;font-weight:700;color:var(--navy)}
+.ai-box p{font-size:0.82rem;color:var(--text-soft);font-weight:300;line-height:1.65;margin-bottom:0.75rem}
+.ai-prompt{background:var(--white);border:1px solid rgba(26,110,250,0.2);padding:0.85rem 1rem;font-size:0.78rem;color:var(--navy);font-family:'Manrope',sans-serif;line-height:1.6;font-style:italic}
+.ai-prompt strong{font-style:normal;color:var(--accent);font-weight:600}
+.ai-tools{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.75rem}
+.ai-tool-tag{font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.55rem;border:1px solid rgba(26,110,250,0.25);color:var(--accent)}
+
+/* MINDSET BOX */
+.mindset-box{background:var(--amber-light);border:1px solid rgba(200,135,58,0.2);border-left:3px solid var(--amber);padding:1.25rem 1.5rem;margin:1.5rem 0}
+.mindset-badge{font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:var(--amber);color:var(--white);padding:0.2rem 0.5rem;margin-bottom:0.6rem;display:inline-block}
+.mindset-box h4{font-family:'Libre Baskerville',serif;font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.mindset-box p{font-size:0.82rem;color:var(--text-soft);font-weight:300;line-height:1.7}
+
+/* WORKSPACE */
+.workspace{background:var(--white);border:1px solid var(--rule);padding:1.5rem;margin:1.5rem 0}
+.workspace-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.workspace h3{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.field-group{margin-bottom:1.25rem}
+.field-group label{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);display:block;margin-bottom:0.35rem}
+.field-group input,.field-group textarea,.field-group select{width:100%;border:1px solid var(--rule);background:var(--off-white);font-family:'Manrope',sans-serif;font-size:0.85rem;color:var(--text);padding:0.6rem 0.75rem;outline:none;transition:border-color 0.2s;resize:vertical}
+.field-group input:focus,.field-group textarea:focus{border-color:var(--accent);background:var(--white)}
+.field-group textarea{min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem}
+
+/* TABLE WORKSPACE */
+.ws-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.ws-table th{background:var(--off-white);padding:0.5rem 0.75rem;text-align:left;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint);border-bottom:2px solid var(--rule)}
+.ws-table td{padding:0.5rem;border-bottom:1px solid var(--rule)}
+.ws-table td input{width:100%;border:none;background:transparent;font-family:'Manrope',sans-serif;font-size:0.8rem;color:var(--text);padding:0.2rem;outline:none}
+.ws-table td input:focus{background:var(--accent-light)}
+.ws-table tr:last-child td{border-bottom:none}
+
+/* DECISION BOX */
+.decision-box{background:var(--navy);padding:1.5rem;margin:1.5rem 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.decision-box p{font-size:0.85rem;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.65}
+.decision-box strong{color:var(--white);font-weight:700}
+.decision-score{text-align:center}
+.decision-score .score-num{font-family:'Libre Baskerville',serif;font-size:2.5rem;font-weight:700;color:var(--accent);display:block;line-height:1}
+.decision-score .score-label{font-size:0.6rem;color:rgba(255,255,255,0.35);letter-spacing:0.12em;text-transform:uppercase}
+
+/* QUOTE */
+.pull-quote{border-left:3px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--white)}
+.pull-quote p{font-family:'Libre Baskerville',serif;font-size:1rem;font-style:italic;color:var(--navy);line-height:1.6}
+.pull-quote cite{font-size:0.7rem;color:var(--text-faint);font-style:normal;letter-spacing:0.08em;margin-top:0.5rem;display:block}
+
+/* DELIVERABLE BOX */
+.deliverable{background:var(--green-light);border:1px solid rgba(22,163,74,0.2);padding:1.25rem 1.5rem;margin:2rem 0}
+.deliverable-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--green);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+.deliverable ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.deliverable ul li{font-size:0.82rem;color:var(--text-soft);display:flex;align-items:flex-start;gap:0.6rem}
+.deliverable ul li::before{content:'→';color:var(--green);font-size:0.75rem;flex-shrink:0;margin-top:0.1rem}
+
+/* CASE STUDY */
+.case-study{border:1px solid var(--rule);margin:1.5rem 0}
+.case-study-header{background:var(--off-white);padding:0.75rem 1.25rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--rule)}
+.case-study-co{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy)}
+.case-study-tagline{font-size:0.75rem;color:var(--text-faint)}
+.case-study-body{padding:1.25rem}
+.case-study-body p{font-size:0.82rem;color:var(--text-soft);font-weight:300;line-height:1.7;margin-bottom:0.5rem}
+.case-study-lesson{font-size:0.78rem;font-weight:600;color:var(--accent);margin-top:0.5rem}
+
+/* PHASE BANNER */
+.phase-banner{background:var(--navy);padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem}
+.phase-num{font-family:'Libre Baskerville',serif;font-size:2rem;font-weight:700;color:rgba(255,255,255,0.1);line-height:1}
+.phase-text .phase-label{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)}
+.phase-text .phase-name{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:400;color:var(--white)}
+.phase-text .phase-desc{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:0.15rem}
+
+/* CHECKLIST */
+.checklist{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0}
+.checklist li{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.85rem;color:var(--text-soft);padding:0.5rem 0;border-bottom:1px solid var(--rule)}
+.checklist li:last-child{border-bottom:none}
+.checklist li input[type=checkbox]{margin-top:0.15rem;accent-color:var(--accent);flex-shrink:0;width:14px;height:14px}
+
+/* MATRIX */
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1rem 0}
+.matrix-cell{background:var(--white);padding:1.25rem}
+.matrix-cell.header{background:var(--off-white)}
+.matrix-cell h4{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:0.4rem}
+.matrix-cell p{font-size:0.78rem;color:var(--text-soft);font-weight:300;line-height:1.6}
+
+/* MOSCOW */
+.moscow-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+.moscow-cell{border:1px solid var(--rule);padding:1rem}
+.moscow-cell h4{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem}
+.moscow-cell.must h4{color:var(--green)}
+.moscow-cell.should h4{color:var(--accent)}
+.moscow-cell.could h4{color:var(--amber)}
+.moscow-cell.wont h4{color:var(--text-faint)}
+.moscow-cell textarea{width:100%;border:none;border-top:1px solid var(--rule);background:var(--off-white);font-family:'Manrope',sans-serif;font-size:0.78rem;color:var(--text);padding:0.5rem;outline:none;resize:vertical;min-height:80px;margin-top:0.5rem}
+
+/* CHOICE ROW — print-friendly circle options */
+.choice-row{display:flex;flex-wrap:wrap;gap:0.75rem;margin:0.5rem 0}
+.choice-opt{font-size:0.82rem;color:var(--text-soft);padding:0.25rem 0;white-space:nowrap}
+
+/* COMPLETION PAGE */
+.completion-hero{background:var(--navy);padding:3rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.completion-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px}
+.completion-hero h1{font-family:'Libre Baskerville',serif;font-size:2.5rem;font-weight:400;color:var(--white);margin-bottom:1rem;position:relative;z-index:1}
+.completion-hero p{font-size:1rem;color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto 2rem;position:relative;z-index:1;font-weight:300;line-height:1.75}
+.completion-checklist{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:2rem 0}
+.completion-phase{background:var(--white);padding:1.5rem}
+.completion-phase h3{font-size:0.65rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.completion-phase ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.completion-phase ul li{font-size:0.78rem;color:var(--text-soft);display:flex;gap:0.5rem;align-items:flex-start}
+.completion-phase ul li::before{content:'✓';color:var(--green);font-size:0.7rem;flex-shrink:0;margin-top:0.1rem}
+
+/* COMMUNITY BOX */
+.community-box{background:var(--accent-light);border:1px solid rgba(26,110,250,0.2);padding:1.5rem;margin:1.5rem 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.community-box h3{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem}
+.community-box p{font-size:0.82rem;color:var(--text-soft);font-weight:300}
+.btn-community{background:var(--accent);color:var(--white);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.75rem 1.5rem;text-decoration:none;white-space:nowrap;display:inline-block;transition:background 0.2s}
+.btn-community:hover{background:var(--accent-dark)}
+
+/* DATA CANVAS */
+.data-canvas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1rem 0}
+.data-cell{background:var(--white);padding:1.25rem}
+.data-cell h4{font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.data-cell textarea{width:100%;border:1px solid var(--rule);background:var(--off-white);font-family:'Manrope',sans-serif;font-size:0.78rem;padding:0.5rem;outline:none;resize:vertical;min-height:80px}
+.data-cell textarea:focus{border-color:var(--accent);background:var(--white)}
+
+/* DIVIDER */
+hr.section-divider{border:none;border-top:1px solid var(--rule);margin:2rem 0}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .field-row,.field-row-3{grid-template-columns:1fr}
+  .moscow-grid,.completion-checklist,.data-canvas{grid-template-columns:1fr}
+}
+
+/* FIELD HINTS — hidden on screen, shown in print BETWEEN label and field */
+.field-hint{
+  display:none;
+  font-size:0.72rem;
+  color:#555;
+  font-style:italic;
+  line-height:1.5;
+  margin-top:3px;
+  margin-bottom:6px;
+  padding-left:1px;
+  display:none;
+}
+
+/* WORKSPACE TABLE NOTES — footer hints for table exercises, print only */
+.ws-table-note{
+  display:none;
+  font-size:0.68rem;
+  color:#888;
+  font-style:italic;
+  border-top:1px solid var(--rule);
+  padding-top:0.5rem;
+  margin-top:0.5rem;
+  line-height:1.75;
+}
+
+/* CONTENTS PAGE — PDF only */
+.print-contents{display:none}
+
+/* REMOVE BROWSER PRINT HEADER/FOOTER (URL + page numbers) */
+@page{
+  size:A4;
+  margin:0;
+}
+
+/* PRINT */
+@media print{
+  /* ── CHROME ── */
+  #access-gate,.sidebar,.topbar,.btn-community{display:none!important}
+  .main{margin-left:0}
+  /* .page padding provides the visual margin since @page margin is 0 */
+  .page{padding:15mm 18mm!important;display:block!important}
+
+  /* ── SHOW PDF-ONLY ELEMENTS ── */
+  .print-contents{display:block!important}
+
+  /* ── COVER PAGE (page 1): white background, dark text, keep blue ── */
+  #page-cover{
+    background:white!important;
+    min-height:0!important;
+    padding:15mm 18mm!important;
+  }
+  #page-cover::before,#page-cover::after{display:none!important}
+  .cover-inner{position:static!important;z-index:auto!important}
+  .cover-tag{color:var(--accent)!important;border-color:rgba(26,110,250,0.35)!important}
+  .cover-headline{color:#0B1628!important}
+  .cover-headline em{color:#1A6EFA!important}
+  .cover-sub{color:#4A5568!important}
+  .cover-meta-item strong{color:#0B1628!important}
+  .cover-meta-item span{color:#8A97AA!important}
+  .cover-divider{background:#DDE3EC!important}
+  .participant-card{background:#F4F6F9!important;border-color:#DDE3EC!important}
+  .participant-field label{color:#8A97AA!important}
+  .participant-field input{
+    border-bottom:1px solid #aaa!important;
+    color:transparent!important
+  }
+
+  /* ── CONTENTS PAGE (page 2): white background, dark text, keep blue ── */
+  .print-contents>div{
+    background:white!important;
+    padding:15mm 18mm!important;
+    min-height:0!important;
+  }
+  .print-contents>div>div:first-child{display:none!important}/* hide dot grid overlay */
+
+  /* ── COLOR PRESERVATION ── */
+  .page-cover,.phase-banner,.completion-hero,.ai-box,.decision-box,
+  .mindset-box,.deliverable,.case-study-header,.print-contents{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact
+  }
+
+  /* ── PAGE BREAKS: major sections ── */
+  .print-contents{page-break-after:always}
+  #page-cover,#page-format,#page-mindset-primer,
+  #page-day1,#page-day2,#page-day3,#page-day4,#page-day5,
+  #page-day6,#page-day7,#page-day8,#page-day9,#page-day10,
+  #page-completion{page-break-before:always}
+
+  /* ── NO ORPHAN HEADERS: keep label with its content ── */
+  .workspace-label,.framework-label,.eyebrow,.phase-label,
+  .ai-box-header,.case-study-header,.deliverable-label{page-break-after:avoid}
+  h1.page-title,h2.section-title,h3.sub-title,
+  .framework h3,.workspace h3,.mindset-box h4{page-break-after:avoid}
+
+  /* ── KEEP BLOCKS INTACT: don't split small/medium elements ── */
+  .framework,.ai-box,.mindset-box,.case-study,
+  .deliverable,.pull-quote,.phase-banner,.agenda,
+  .matrix-grid,.moscow-grid,.decision-box{
+    break-inside:avoid;page-break-inside:avoid
+  }
+
+  /* ── FONTS: reduced for print readability ── */
+  h1.page-title{font-size:1.4rem!important;margin-bottom:0.4rem}
+  h2.section-title{font-size:1.05rem!important}
+  h3.sub-title{font-size:0.9rem!important}
+  .cover-headline{font-size:2rem!important}
+  .cover-sub{font-size:0.8rem!important}
+  .cover-meta-item strong{font-size:0.95rem!important}
+  .page-intro{font-size:0.78rem!important;margin-bottom:1.25rem}
+  .eyebrow{font-size:0.55rem!important}
+  .phase-label{font-size:0.55rem!important}
+  .phase-name{font-size:0.9rem!important}
+  .phase-desc{font-size:0.7rem!important}
+  .framework-label,.workspace-label,.deliverable-label{font-size:0.52rem!important}
+  .framework h3,.workspace h3{font-size:0.88rem!important;margin-bottom:0.4rem}
+  .framework p,.workspace p{font-size:0.75rem!important;line-height:1.6}
+  .ai-box-title{font-size:0.78rem!important}
+  .ai-badge{font-size:0.52rem!important}
+  .ai-box p{font-size:0.72rem!important;margin-bottom:0.5rem}
+  .ai-prompt{font-size:0.68rem!important;line-height:1.55;padding:0.65rem 0.8rem}
+  .ai-tool-tag{font-size:0.52rem!important}
+  .mindset-badge{font-size:0.52rem!important}
+  .mindset-box h4{font-size:0.82rem!important;margin-bottom:0.3rem}
+  .mindset-box p{font-size:0.74rem!important;line-height:1.6}
+  .field-group label{font-size:0.56rem!important;margin-bottom:0.25rem}
+  .field-hint{font-size:0.63rem!important;margin-bottom:5px}
+  .case-study-co{font-size:0.62rem!important}
+  .case-study-tagline{font-size:0.65rem!important}
+  .case-study-body p{font-size:0.72rem!important;line-height:1.6}
+  .case-study-lesson{font-size:0.68rem!important}
+  .agenda th{font-size:0.55rem!important;padding:0.4rem 0.6rem}
+  .agenda td{font-size:0.68rem!important;padding:0.45rem 0.6rem}
+  .ws-table th{font-size:0.55rem!important;padding:0.4rem 0.6rem}
+  .ws-table td{font-size:0.7rem!important;padding:0.4rem 0.5rem}
+  .ws-table-note{font-size:0.62rem!important}
+  .deliverable ul li{font-size:0.72rem!important}
+  .pull-quote p{font-size:0.88rem!important}
+  .pull-quote cite{font-size:0.62rem!important}
+  .choice-opt{font-size:0.72rem!important}
+
+  /* ── SPACING: tighter for print ── */
+  .section-header{margin-bottom:1.1rem}
+  .framework{padding:1rem 1.25rem;margin:1rem 0}
+  .workspace{padding:1rem 1.25rem;margin:1rem 0}
+  .ai-box{padding:0.85rem 1rem;margin:1rem 0}
+  .mindset-box{padding:0.85rem 1rem;margin:1rem 0}
+  .case-study{margin:1rem 0}
+  .case-study-body{padding:0.85rem 1rem}
+  .deliverable{padding:0.85rem 1rem;margin:1.25rem 0}
+  .field-group{margin-bottom:0.85rem}
+  .phase-banner{padding:0.9rem 1.25rem;margin-bottom:1.25rem}
+
+  /* ── BLANK LINES: hide all placeholder text ── */
+  .field-group input::placeholder,
+  .field-group textarea::placeholder,
+  .ws-table td input::placeholder{color:transparent!important;opacity:0!important}
+
+  /* ── COVER PAGE: empty fields as pen-fill lines ── */
+  .participant-field input::placeholder{color:transparent!important;opacity:0!important}
+  .participant-field input{
+    border-bottom:1px solid rgba(255,255,255,0.45)!important;
+    min-height:26px;color:transparent!important
+  }
+
+  /* ── INPUT FIELDS: clean blank lines ── */
+  .field-group input[type=text],
+  .field-group input[type=number],
+  .field-group input[type=date]{
+    border:none!important;
+    border-bottom:1.5px solid #aaa!important;
+    background:transparent;min-height:26px;padding-bottom:3px
+  }
+  .field-group textarea{
+    min-height:72px;
+    border:1.5px solid #ccc!important;
+    background:transparent
+  }
+  .ws-table td input{
+    border-bottom:1px solid #ccc!important;
+    border-top:none!important;border-left:none!important;border-right:none!important
+  }
+  .ws-table td input::placeholder{color:transparent!important;opacity:0!important}
+
+  /* ── SHOW PRINT-ONLY ELEMENTS ── */
+  .field-hint{display:block!important}
+  .ws-table-note{display:block!important}
+
+  /* ── CHOICE ROWS ── */
+  .choice-row{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ACCESS GATE -->
+<div id="access-gate" style="position:fixed;inset:0;z-index:9999;background:#0B1628;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Manrope',sans-serif;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;background:#162240;border:1px solid rgba(255,255,255,0.08);padding:2.5rem;width:100%;max-width:440px;text-align:center;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;color:white;margin-bottom:1.75rem;">Tone<span style="color:#1A6EFA">.</span>Ventures</div>
+    <h1 style="font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:400;color:white;line-height:1.3;margin-bottom:0.5rem;">Business Launch<br>Sprint Workbook</h1>
+    <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;line-height:1.6;">Enter your access code to unlock the interactive workbook. You received this code in your purchase confirmation email.</p>
+    <label style="font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:0.4rem;text-align:left;">Access Code</label>
+    <input id="gate-code" type="text" placeholder="e.g. SPRINT-2026" autocomplete="off" autocapitalize="characters"
+      style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:white;font-family:'Manrope',sans-serif;font-size:0.9rem;padding:0.75rem 1rem;outline:none;margin-bottom:0.75rem;letter-spacing:0.06em;"/>
+    <div id="gate-error" style="font-size:0.78rem;color:#F87171;margin-bottom:0.75rem;display:none;">Invalid code. Check your purchase confirmation email.</div>
+    <button onclick="checkCode()" style="width:100%;background:#1A6EFA;color:white;font-family:'Manrope',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.9rem;border:none;cursor:pointer;margin-bottom:1.5rem;">Unlock Workbook →</button>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:0 0 1.25rem;"/>
+    <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin-bottom:1rem;">Don't have a code? <a href="sprint.html#pricing" style="color:#1A6EFA;font-weight:600;text-decoration:none;">Purchase access →</a></div>
+    <div style="display:flex;gap:0.75rem;">
+      <a href="#" onclick="window.print();return false;" style="flex:1;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.55);font-family:'Manrope',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem;text-decoration:none;display:block;text-align:center;">↓ Save as PDF</a>
+      <a href="sprint.html" style="flex:1;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.55);font-family:'Manrope',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem;text-decoration:none;display:block;text-align:center;">← Back</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const VALID_CODES = [
+  'SPRINT-2026', 'TONEAI-LAUNCH', 'FOUNDERS-GO',
+  'SPRINT-APRIL', 'SPRINT-MAY', 'SPRINT-JUNE',
+  'TONEAI-ADMIN',
+  'DEMO-ACCESS'
+];
+
+function checkCode() {
+  const input = document.getElementById('gate-code').value.trim().toUpperCase();
+  const err = document.getElementById('gate-error');
+  if (VALID_CODES.includes(input)) {
+    document.getElementById('access-gate').style.display = 'none';
+    sessionStorage.setItem('workbook-access', 'granted');
+    err.style.display = 'none';
+  } else {
+    err.style.display = 'block';
+    document.getElementById('gate-code').style.borderColor = '#F87171';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeInput = document.getElementById('gate-code');
+  if (codeInput) {
+    codeInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkCode();
+      this.style.borderColor = 'rgba(255,255,255,0.12)';
+    });
+  }
+  if (sessionStorage.getItem('workbook-access') === 'granted') {
+    const gate = document.getElementById('access-gate');
+    if (gate) gate.style.display = 'none';
+  }
+});
+</script>
+</script>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="https://tone.ventures/">Tone<span>.</span>Ventures</a>
+    <a href="sprint.html" class="sidebar-back">← Back to Sprint</a>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-label">Sprint Progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-pct" id="progressPct">0% Complete</div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Getting Started</div>
+    <a class="nav-item active" onclick="showPage('cover')">Cover & Welcome</a>
+    <a class="nav-item" onclick="showPage('format')">Session Format</a>
+    <a class="nav-item" onclick="showPage('mindset-primer')">Founder Mindset</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Phase 1 — Discovery</div>
+    <a class="nav-item" onclick="showPage('day1')">Day 1 · Validate Your Idea</a>
+    <a class="nav-item" onclick="showPage('day2')">Day 2 · Know Your Customer</a>
+    <a class="nav-item" onclick="showPage('day3')">Day 3 · Design Your Offer</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Phase 2 — Build</div>
+    <a class="nav-item" onclick="showPage('day4')">Day 4 · Create Business Case</a>
+    <a class="nav-item" onclick="showPage('day5')">Day 5 · Shape Your Brand</a>
+    <a class="nav-item" onclick="showPage('day6')">Day 6 · Make It Official</a>
+    <a class="nav-item" onclick="showPage('day7')">Day 7 · Build Your Online Presence</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Phase 3 — Launch</div>
+    <a class="nav-item" onclick="showPage('day8')">Day 8 · Design Your Brand</a>
+    <a class="nav-item" onclick="showPage('day9')">Day 9 · Get Your First Sale</a>
+    <a class="nav-item" onclick="showPage('day10')">Day 10 · Go Public</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Completion</div>
+    <a class="nav-item" onclick="showPage('completion')">Sprint Complete</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div>
+    <div class="topbar-day" id="topbarDay">Getting Started</div>
+    <div class="topbar-title" id="topbarTitle">Business Launch Sprint Workbook</div>
+  </div>
+  <div class="topbar-nav">
+    <button class="topbar-btn" onclick="prevPage()">← Prev</button>
+    <button class="topbar-btn primary" onclick="nextPage()">Next →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ COVER ═══ -->
+<div class="page active cover-page" id="page-cover">
+  <div class="cover-inner">
+    <span class="cover-tag">Business Launch Sprint · Tone Ventures</span>
+    <h1 class="cover-headline">From <em>idea</em><br>to live business<br>in 10 days.</h1>
+    <p class="cover-sub">A hands-on workbook for the live group cohort. Bring your idea — any kind of business. We'll build it together, with AI doing the heavy lifting.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><strong>10</strong><span>Working Days</span></div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta-item"><strong>3</strong><span>Phases</span></div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta-item"><strong>AI+</strong><span>Every Session</span></div>
+    </div>
+    <div class="participant-card">
+      <div class="participant-field"><label>Your Name</label><input type="text" placeholder="Full name"/></div>
+      <div class="participant-field"><label>Business Idea</label><input type="text" placeholder="One sentence"/></div>
+      <div class="participant-field"><label>Sprint Start Date</label><input type="date"/></div>
+      <div class="participant-field"><label>Cohort / Group</label><input type="text" placeholder="e.g. April 2026"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENTS — PDF/PRINT ONLY ═══════════════ -->
+<div class="print-contents">
+  <div style="background:white;padding:3rem 3.5rem;min-height:100vh;position:relative;box-sizing:border-box;">
+    <div style="position:relative;z-index:1;max-width:620px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:#8A97AA;margin-bottom:0.3rem;">Tone.Ventures</div>
+      <div style="font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:400;color:#0B1628;line-height:1.2;margin-bottom:0.5rem;">Business Launch Sprint<br>Workbook</div>
+      <div style="font-size:0.78rem;color:#4A5568;margin-bottom:3rem;font-family:'Manrope',sans-serif;">From idea to live business in 10 working days.</div>
+      <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#1A6EFA;margin-bottom:1.75rem;font-family:'Manrope',sans-serif;">Contents — What's Inside</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 3rem;">
+        <div>
+          <div style="margin-bottom:2rem;">
+            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#8A97AA;margin-bottom:0.75rem;font-family:'Manrope',sans-serif;">Getting Started</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:0.8rem;line-height:2.1;color:#4A5568;">Cover &amp; Welcome<br>Session Format<br>The Founder Mindset</div>
+          </div>
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#1A6EFA;margin-bottom:0.75rem;font-family:'Manrope',sans-serif;">Phase 1 — Discovery</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:0.8rem;line-height:2.1;color:#4A5568;">Day 1 · Validate Your Idea<br>Day 2 · Know Your Customer<br>Day 3 · Design Your Offer</div>
+          </div>
+        </div>
+        <div>
+          <div style="margin-bottom:2rem;">
+            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#1A6EFA;margin-bottom:0.75rem;font-family:'Manrope',sans-serif;">Phase 2 — Build</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:0.8rem;line-height:2.1;color:#4A5568;">Day 4 · Create Business Case<br>Day 5 · Shape Your Brand<br>Day 6 · Make It Official<br>Day 7 · Build Your Online Presence</div>
+          </div>
+          <div style="margin-bottom:2rem;">
+            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#1A6EFA;margin-bottom:0.75rem;font-family:'Manrope',sans-serif;">Phase 3 — Launch</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:0.8rem;line-height:2.1;color:#4A5568;">Day 8 · Design Your Brand<br>Day 9 · Get Your First Sale<br>Day 10 · Go Public</div>
+          </div>
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#8A97AA;margin-bottom:0.75rem;font-family:'Manrope',sans-serif;">Completion</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:0.8rem;line-height:2.1;color:#4A5568;">Sprint Complete</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid #DDE3EC;">
+        <div style="font-family:'Manrope',sans-serif;font-size:0.72rem;color:#8A97AA;line-height:2;">
+          Each day includes &nbsp;·&nbsp; Framework overview with industry examples &nbsp;·&nbsp; Exercises with fillable templates<br>
+          AI prompts to accelerate your work &nbsp;·&nbsp; Deliverables checklist
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ FORMAT ═══ -->
+<div class="page" id="page-format">
+  <div class="section-header">
+    <span class="eyebrow">How This Works</span>
+    <h1 class="page-title">Session Format</h1>
+    <p class="page-intro">Every session follows the same structure. The content changes each day — the rhythm doesn't. Once you know the format, you can focus entirely on the work.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In &amp; Intro</strong> · 10 min</td><td>Brief round of where everyone is. Energy, questions, anything unresolved since the last session. Sets the room before the work begins.</td></tr>
+      <tr><td>0:10</td><td><strong>Answers from Previous Session</strong> · 10–15 min</td><td>Common questions and observations from last session's work reviewed together. Clarifications, patterns noticed across the group, corrections if needed.</td></tr>
+      <tr><td>0:25</td><td><strong>Theory &amp; Industry Practice</strong> · 25–30 min</td><td>The day's framework presented with real-world examples from different industries. Concepts shown in practice — not in theory alone.</td></tr>
+      <tr><td>0:55</td><td><strong>Exercises Introduction</strong> · 10 min</td><td>Each exercise walked through before you start. What to do, what good looks like, what to watch out for.</td></tr>
+      <tr><td>1:05</td><td><strong>Live Work Session</strong> · 50–60 min</td><td>Everyone works on their own business. This is not group work — it's individual focused time. Use the workbook, use AI, ask questions as they come up.</td></tr>
+      <tr><td>2:05</td><td><strong>Share &amp; Feedback</strong> · 15–20 min</td><td>Share with the group if time allows. If not, upload your work to the shared Google Drive folder — the facilitator will review submissions and address common themes at the start of the next session. For personalised feedback on your specific work, additional mentoring hours are available.</td></tr>
+      <tr><td>2:25</td><td><strong>Wrap-Up</strong> · 10 min</td><td>Review what was completed in the session. Anything not finished is noted — complete it offline before the next session. Preview of what's coming next.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="framework">
+    <span class="framework-label">Guiding Philosophy</span>
+    <h3>We don't just plan. We execute.</h3>
+    <p>Every session produces something real — a validated problem, a filled-in canvas, a sent message, a live website. By Day 10, you won't have a plan. You'll have a business. The workbook is not for reading — it's for doing.</p>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">On the work session</span>
+    <h4>This is not a workshop where you listen and do it later.</h4>
+    <p>The live work session is where the real work happens — not at home, not before the next day. Whatever you build in the room is real. Whatever you leave unfinished is a gap you carry into the next session. The people around you are doing the same thing at the same time. Use that.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"The best founders aren't the most talented. They're the ones who keep showing up, keep learning, and keep shipping."</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ MINDSET PRIMER ═══ -->
+<div class="page" id="page-mindset-primer">
+  <div class="section-header">
+    <span class="eyebrow">Before You Begin</span>
+    <h1 class="page-title">The Founder Mindset</h1>
+    <p class="page-intro">Starting a business is not just a business challenge — it's a psychological one. The frameworks in this workbook are important. But your relationship with fear, failure, and uncertainty will determine more than any framework.</p>
+  </div>
+
+  <div class="framework">
+    <span class="framework-label">Reality Check · Before You Begin</span>
+    <h3>Business or Hobby?</h3>
+    <p>Both are legitimate. But they're built differently, measured differently, and require entirely different levels of commitment. Knowing which one you're actually building protects you from the hardest kind of burnout — the one where the two got quietly confused.</p>
+    <table class="ws-table" style="margin-top:0.75rem">
+      <thead><tr><th></th><th>Hobby</th><th>Business</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Revenue</strong></td><td>Optional — nice if it happens</td><td>Required — the measure of whether it works</td></tr>
+        <tr><td><strong>Customer</strong></td><td>Anyone who shows up</td><td>Someone specific you've chosen and committed to serve</td></tr>
+        <tr><td><strong>Consistency</strong></td><td>When you feel like it</td><td>When you don't</td></tr>
+        <tr><td><strong>Feedback</strong></td><td>Welcome but optional</td><td>Mandatory — customers define your direction</td></tr>
+        <tr><td><strong>Measure of success</strong></td><td>Personal satisfaction</td><td>Value created for others, reflected in revenue</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Every business starts from one of two places: survival — when you have nothing to lose and urgency drives you forward — or grounded commitment — when you've made a deliberate choice to show up, plan, and build with discipline before you have to. Both work. What doesn't work is starting from a vague wish. Know which one you are."</p>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Imposter Syndrome</span>
+    <h4>"Who am I to start a business?"</h4>
+    <p>Every founder feels this. Every single one. The question isn't whether you're qualified — nobody is at the start. The question is whether you're curious, committed, and willing to learn faster than you fail. Qualifications follow execution, not the other way around.</p>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">The Perfectionism Trap</span>
+    <h4>Done is better than perfect. Shipped beats polished.</h4>
+    <p>Perfectionism is procrastination in disguise. Every day you spend perfecting something before showing it to a real customer is a day you're learning nothing. The feedback you get from one imperfect launch will teach you more than six months of polishing ever could.</p>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Fear of Judgement</span>
+    <h4>People are less focused on you than you think.</h4>
+    <p>The fear of being seen, judged, or failing publicly is real — and it's the single biggest thing that stops people from launching. Here's the truth: most people are too focused on their own lives to scrutinize yours. The ones who do notice will respect you for trying.</p>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Reflection Exercise</span>
+    <h3>Your Business Starting Point</h3>
+    <div class="field-group">
+      <label>What's the story behind this idea? Why does it matter to you?</label>
+      <textarea placeholder="Not 'I think it could make money.' Why this, why you, why now in your life?"></textarea>
+    </div>
+    <div class="field-group">
+      <label>What would success look like for the people you'd serve — if this business works the way you hope?</label>
+      <textarea placeholder="What changes for your customers? What problem goes away? What becomes possible for them?"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Am I doing this for money, for joy, or both — and what does that mean for how I'll build it?</label>
+      <textarea placeholder="Neither is wrong. Pure passion without economics leads to burnout. Pure money-chasing without genuine interest leads to quitting when it gets hard. The most durable businesses live at the intersection."></textarea>
+    </div>
+    <div class="field-group">
+      <label>What does success look like for this project in 2 years? Be specific.</label>
+      <textarea placeholder="Not 'I want to be successful.' Revenue? Customers served? Hours worked per week? Freedom gained? Write a number, a scene — something you could actually measure."></textarea>
+    </div>
+    <div class="field-group">
+      <label>Am I ready to commit seriously to this for the next 2 years — through the hard months?</label>
+      <div class="choice-row">
+        <span class="choice-opt">○ Yes, fully committed</span>
+        <span class="choice-opt">○ Not sure yet — this sprint will help me decide</span>
+        <span class="choice-opt">○ This is an exploratory first step</span>
+      </div>
+      <textarea placeholder="What does this commitment mean in practical terms for your life right now?"></textarea>
+    </div>
+    <div class="field-group">
+      <label>What am I willing to give up to build this?</label>
+      <textarea placeholder="Time, income stability, weekends, comfort, certainty. Name it. The founders who burn out are usually the ones who didn't answer this before they started."></textarea>
+    </div>
+  </div>
+
+  <div class="community-box">
+    <div>
+      <h3>Your cohort is your accountability system.</h3>
+      <p>Introduce yourself in the group channel before Day 1. Share your idea, your fear, and your one commitment. You'll be surprised how much lighter it feels.</p>
+    </div>
+    <a href="#" class="btn-community">Join the Group</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 1 ═══ -->
+<div class="page" id="page-day1">
+  <div class="phase-banner">
+    <div class="phase-num">01</div>
+    <div class="phase-text">
+      <div class="phase-label">Phase 1 · Discovery</div>
+      <div class="phase-name">Days 1–3: Understand the problem, the customer, and what you'll build</div>
+      <div class="phase-desc">Before you build anything, you need to know it's worth building.</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <span class="eyebrow">Day 1</span>
+    <h1 class="page-title">Validate Your Idea</h1>
+    <p class="page-intro">You came here with an idea. Today's job is not to fall in love with it — it's to stress-test it. The founders who build durable businesses aren't the ones with the best ideas on Day 1. They're the ones who found the sharpest problem, understood exactly who has it, and knew why the moment to solve it is now.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Introduction</strong> · 10 min</td><td>What idea validation really means — and why most businesses skip it and pay the price later</td></tr>
+      <tr><td>0:10</td><td><strong>Methodology Block 1</strong> · 30 min</td><td>Problem discovery frameworks with real-world examples: Pain / Passion / Pattern · the Frequency–Intensity–Cost test · how to tell a business problem from a personal preference</td></tr>
+      <tr><td>0:40</td><td><strong>Methodology Block 2</strong> · 30 min</td><td>The "Why Now?" analysis · mapping assumptions · what must be true for this to work · four types of timing triggers with examples</td></tr>
+      <tr><td>1:10</td><td><strong>Work Session</strong> · 35 min</td><td>Exercise 1: Problem Statement Canvas · Exercise 2: 5 Angles on Your Idea · Exercise 3: Your Validation Plan</td></tr>
+      <tr><td>1:45</td><td><strong>Share & Feedback</strong> · 10 min</td><td>Each person reads their problem statement. One strength named, one open question raised.</td></tr>
+      <tr><td>1:55</td><td><strong>Wrap-Up</strong> · 5 min</td><td>Deliverables confirmed. Preview of Day 2: Know Your Customer.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="framework">
+    <span class="framework-label">Framework · Methodology Block 1 — Three Sources of Business Ideas</span>
+    <h3>Where validated business ideas come from</h3>
+    <p>Strong business ideas don't come from brainstorming sessions — they come from a close relationship with a real problem. The three most durable sources:</p>
+    <table class="ws-table" style="margin-top:0.75rem">
+      <thead><tr><th>Source</th><th>What it looks like</th><th>Why it works</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Pain</strong></td><td>A problem you personally experience, repeatedly</td><td>You are the customer. Deep, lived insight — not research.</td><td>Stewart Butterfield couldn't manage team communication across email. He built Slack.</td></tr>
+        <tr><td><strong>Passion</strong></td><td>A domain you're obsessed with and know unusually well</td><td>Long-term staying power. You'll keep going when it gets hard.</td><td>Whitney Wolfe Herd knew the dating app world from the inside. She built Bumble with a clear differentiated view.</td></tr>
+        <tr><td><strong>Pattern</strong></td><td>A trend or gap you observe through your professional work</td><td>Unique vantage point others without your background can't see.</td><td>Melanie Perkins saw every school struggling to teach design software. She built Canva to make design accessible.</td></tr>
+      </tbody>
+    </table>
+    <div style="background:var(--off-white);border:1px solid var(--rule);padding:1rem;margin-top:0.75rem">
+      <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.5rem">The three-question test for any problem</p>
+      <p style="font-size:0.82rem;color:var(--text-soft);line-height:1.7">Before committing to a problem, ask: <strong>Is it frequent?</strong> (Does your customer experience this regularly, not once a year?) <strong>Is it intense?</strong> (Does it cost them real time, money, or frustration?) <strong>Are they already paying?</strong> (Even a bad, expensive workaround is proof of demand.) A problem that fails all three is a feature request. A problem that passes all three is a business.</p>
+    </div>
+  </div>
+
+  <div class="framework">
+    <span class="framework-label">Framework · Methodology Block 2 — The "Why Now?" Test</span>
+    <h3>Timing is half the business</h3>
+    <p>A good problem can exist for decades without becoming a business. What creates the window is a shift — something that makes the problem more urgent, more solvable, or more visible today than it was before. Four types of shifts create timing:</p>
+    <table class="ws-table" style="margin-top:0.75rem">
+      <thead><tr><th>Trigger</th><th>What changed</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Technology shift</strong></td><td>A new tool makes the solution possible or dramatically cheaper than before</td><td>Stripe (2010) — payment APIs became accessible to any developer for the first time, not just banks</td></tr>
+        <tr><td><strong>Behaviour change</strong></td><td>How people live or work has shifted, creating a need that didn't exist at scale before</td><td>Peloton (2012) — smartphone habits normalised subscription entertainment, making in-home fitness viable</td></tr>
+        <tr><td><strong>Market gap</strong></td><td>A category has grown but an underserved segment is being ignored by existing players</td><td>Glossier (2014) — social media created a new beauty consumer who wasn't being served by traditional brands</td></tr>
+        <tr><td><strong>Regulatory or macro change</strong></td><td>A law, crisis, or economic shift creates urgency or unlocks new access</td><td>Zoom (accelerated 2020) — remote work mandates turned a nice-to-have into a critical necessity overnight</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="case-study">
+    <div class="case-study-header">
+      <span class="case-study-co">Example · What a Strong Problem Statement Looks Like</span>
+      <span class="case-study-tagline">No solution mentioned. Specific customer. Real cost. Existing (inadequate) workaround.</span>
+    </div>
+    <div class="case-study-body">
+      <p><strong>Local service business:</strong> "Yoga studio owners and independent fitness instructors managed class bookings through phone calls, paper sign-up sheets, and Facebook messages — with no way to take payment in advance, track waitlists, or send automated reminders. Students regularly no-showed without cancelling, leaving instructors with empty spots they could have filled and no reliable weekly income." <span class="case-study-lesson">→ Became Mindbody.</span></p>
+      <p><strong>Physical product:</strong> "Serious outdoor enthusiasts and campers found that every consumer cooler on the market failed to keep ice beyond 24 hours in real field conditions. The only products with genuine performance were built for commercial fishing operations — heavy, expensive, and never designed for recreational use. Nobody had built a rugged, properly insulated cooler for people who actually spent days in the field." <span class="case-study-lesson">→ Became YETI.</span></p>
+      <p><strong>B2B service:</strong> "Independent wedding planners and event coordinators spent more than a third of their working hours chasing vendor quotes, unsigned contracts, and late payments across email and spreadsheets. Every new event meant rebuilding the same manual process from scratch, with no way to track what had been sent, agreed, or paid — and mistakes cost them client relationships." <span class="case-study-lesson">→ Became HoneyBook.</span></p>
+      <p class="case-study-lesson">Notice: each one names a specific customer, a specific context, a real cost, and an existing workaround — across three completely different business types. No solution is mentioned in any of them.</p>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Problem Statement Canvas</span>
+    <h3>Define the problem you're solving</h3>
+    <div class="field-group"><label>Who has this problem? (Be specific — not "everyone" or "small businesses")</label><input type="text" placeholder="e.g. Restaurant owners with 10–30 seats in mid-sized cities"/></div>
+    <div class="field-group"><label>What is the problem they face? Describe it in their words, not yours.</label><textarea placeholder="What do they actually complain about? What do they Google at midnight?"></textarea></div>
+    <div class="field-group"><label>When and where does it occur? (Context matters — the situation shapes the solution)</label><input type="text" placeholder="e.g. Every Friday evening when the booking system crashes during peak hours"/></div>
+    <div class="field-group"><label>What does it cost them? (Time, money, opportunity, emotional cost — quantify where possible)</label><textarea placeholder="e.g. They lose 15–20% of covers to walkaways because they can't manage the waitlist manually"></textarea></div>
+    <div class="field-group"><label>How do they currently solve it? What workarounds exist and what do they pay for?</label><textarea placeholder="The existence of a workaround — even a bad one — is proof of demand"></textarea></div>
+    <div class="field-group"><label>Why are existing solutions inadequate? (This is your opening)</label><textarea placeholder="Too expensive, too complex, not built for their context, missing the key feature they need?"></textarea></div>
+    <div style="border-top:1px solid var(--rule);padding-top:1rem;margin-top:0.5rem">
+      <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">Why Now? — The timing layer</p>
+      <div class="field-group"><label>What has changed in the last 2–3 years that makes this problem more urgent or more solvable today?</label><textarea placeholder="Technology, behaviour shift, market gap, regulatory change — which type of trigger applies? (See Methodology Block 2)"></textarea></div>
+      <div class="field-group"><label>Your one-sentence "Why Now" statement</label><input type="text" placeholder="e.g. AI tools now make it possible for a 2-person team to do what previously required a department"/></div>
+    </div>
+    <div class="field-group" style="margin-top:0.5rem"><label>Your complete Problem Statement (one paragraph combining all of the above)</label><textarea style="min-height:100px" placeholder="[My customer] struggle with [problem] when [context], which means [cost/consequence]. They currently [workaround], but [why inadequate]. The time to solve this is now because [why now]."></textarea></div>
+  </div>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Stress-test your problem statement and analyse your timing</span></div>
+    <p>You've written your problem statement. Now use AI to challenge it before moving on. Run both prompts and update your canvas with anything that doesn't hold up.</p>
+    <div class="ai-prompt"><strong>Problem statement pressure test:</strong> "You are a skeptical but constructive investor. Here is my problem statement: [paste yours]. What are the 3 weakest assumptions I'm making? What would make this a stronger problem to solve? What questions should I ask real customers to validate or disprove it?"</div>
+    <div class="ai-prompt" style="margin-top:0.75rem"><strong>Why Now analysis:</strong> "My business idea is [describe it]. Help me identify: 1) What has changed in the last 2–3 years that makes this problem more urgent or more solvable today? 2) Who are the existing players and what gap do they leave? 3) What is the single strongest 'Why Now' argument I could make to a potential customer or investor?"</div>
+    <div class="ai-tools"><span class="ai-tool-tag">ChatGPT</span><span class="ai-tool-tag">Claude</span><span class="ai-tool-tag">Gemini</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 2 · 5 Angles on Your Idea</span>
+    <h3>Test your sharpest version before committing</h3>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-bottom:1rem">Now that you've written your problem statement, stretch it in four directions — a different customer, a narrower market, a different format, B2B vs B2C. The goal isn't to abandon what you wrote. It's to find the sharpest, most defensible version before you invest 10 days building it. Rate urgency 1–5: how intensely does this customer need a solution right now?</p>
+    <table class="ws-table">
+      <thead><tr><th>Angle</th><th>Describe the idea</th><th>Who is the customer?</th><th>Core problem</th><th>Urgency 1–5</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--accent);font-weight:700;white-space:nowrap">My idea</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text" style="width:44px"/></td></tr>
+        <tr><td style="white-space:nowrap">Variation 1</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text" style="width:44px"/></td></tr>
+        <tr><td style="white-space:nowrap">Variation 2</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text" style="width:44px"/></td></tr>
+        <tr><td style="white-space:nowrap">Variation 3</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text" style="width:44px"/></td></tr>
+        <tr><td style="white-space:nowrap">Variation 4</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text" style="width:44px"/></td></tr>
+      </tbody>
+    </table>
+    <p class="ws-table-note">My idea: transfer your problem statement from Exercise 1 · Variation 1: try a different customer segment · Variation 2: narrow the geography or niche · Variation 3: flip B2B / B2C · Variation 4: consider a different format — service, product, or platform</p>
+    <div class="field-group" style="margin-top:1rem">
+      <label>The angle I'm taking forward — and why it has the strongest, most urgent problem behind it</label>
+      <textarea placeholder="Which row scored highest on urgency? Which customer has the most intense pain? Which version can you realistically reach in the next 10 days?"></textarea>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 3 · Your Validation Plan</span>
+    <h3>3 conversations that will test everything you just wrote</h3>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-bottom:1rem">The fastest way to find out if your problem statement is right is to have a real conversation with someone who might have the problem. Use The Mom Test: ask about their life, not your idea. Ask about the past, not the future. Listen more than you talk. Don't pitch — just learn.<br><br>Identify 3 people you could speak to in the next few days. They don't need to be perfect — just someone who plausibly experiences the problem you described.</p>
+    <table class="ws-table">
+      <thead><tr><th>Person to speak with</th><th>Why they're relevant</th><th>One question to ask them</th><th>Key insight (fill after)</th></tr></thead>
+      <tbody>
+        <tr><td><input type="text" placeholder="Name or role"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text" placeholder="Name or role"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text" placeholder="Name or role"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+      </tbody>
+    </table>
+    <div class="field-group" style="margin-top:1rem">
+      <label>After your conversations: what did you learn that surprised you — or that changed your problem statement?</label>
+      <textarea placeholder="Come back and fill this in after you've spoken to them. It's often the most valuable thing in this workbook."></textarea>
+    </div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 1</span>
+    <h4>The courage to be a beginner</h4>
+    <p>Today you're putting an unfinished idea into the world for the first time. It will feel exposed and incomplete. That's exactly right. The founders who build great companies aren't the ones with the most polished ideas — they're the ones willing to learn in public. You're already ahead of everyone who stayed home.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 1 Deliverables</div>
+    <ul>
+      <li>Problem Statement Canvas completed including the Why Now layer</li>
+      <li>Complete one-paragraph problem statement written</li>
+      <li>5 angles explored — strongest version chosen with rationale</li>
+      <li>Validation Plan: 3 people identified to speak with</li>
+    </ul>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Future Vision Exercise · Before You Move On</span>
+    <h3>Tuesday in Two Years</h3>
+    <p style="font-size:0.85rem;color:var(--text-soft);line-height:1.75;margin-bottom:1.5rem">You've defined the problem and explored your angles. Before moving to Day 2, take ten minutes to imagine this idea fully built.<br><br>It's a Tuesday morning, two years from today. Your business exists and has been running for 24 months. Don't describe a best-case scenario — describe a real working day, with real customers, real problems, and the real version of yourself who showed up and built it.</p>
+    <div class="field-group">
+      <label>Where are you when you start your day?</label>
+      <textarea placeholder="At home, in an office, on-site with a client, travelling?"></textarea>
+    </div>
+    <div class="field-group">
+      <label>What's the first thing you work on?</label>
+      <textarea placeholder="What kind of problems are filling your mornings?"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Who needed you today — and for what?</label>
+      <textarea placeholder="Name a specific customer or situation. Make it concrete."></textarea>
+    </div>
+    <div class="field-group">
+      <label>What did you struggle with this week?</label>
+      <textarea placeholder="Real businesses have real problems even when they're working."></textarea>
+    </div>
+    <div class="field-group">
+      <label>What does revenue look like this month?</label>
+      <input type="text" placeholder="Give it a number — even a rough one. Specificity forces honesty."/>
+    </div>
+    <div class="field-group">
+      <label>What did you have to give up to get here?</label>
+      <textarea placeholder="What did the journey cost you — and was it worth it?"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Does this picture feel right — or does it feel like someone else's life?</label>
+      <div class="choice-row">
+        <span class="choice-opt">○ This feels like mine — ready to move to Day 2</span>
+        <span class="choice-opt">○ Parts of it do, parts don't — I'll adjust my angle and revisit</span>
+        <span class="choice-opt">○ It doesn't feel right — I need to go back and test a different idea</span>
+      </div>
+      <textarea placeholder="What does your answer tell you? If the picture doesn't feel right, return to Exercise 2 and explore a different angle before continuing."></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 2 ═══ -->
+<div class="page" id="page-day2">
+  <div class="section-header">
+    <span class="eyebrow">Day 2</span>
+    <h1 class="page-title">Know Your Customer</h1>
+    <p class="page-intro">You can't serve everyone — and trying to will cost you the business. Today you get obsessively specific about who you're building for: who they are, what drives them, and why they'd choose you over doing nothing.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong> — Share insights from validation conversations</td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Customer segmentation, competitive positioning</td></tr>
+      <tr><td>0:40</td><td><strong>Exercise 1</strong> — Customer Persona Canvas (25 min)</td></tr>
+      <tr><td>1:05</td><td><strong>Exercise 2</strong> — Competitive Analysis (20 min)</td></tr>
+      <tr><td>1:25</td><td><strong>Exercise 3</strong> — Channel Selection (20 min)</td></tr>
+      <tr><td>1:45</td><td><strong>Exercise 4</strong> — Positioning Statement (15 min)</td></tr>
+      <tr><td>2:00</td><td><strong>Share & Feedback</strong></td></tr>
+      <tr><td>2:25</td><td><strong>Wrap-Up</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Build your customer persona with AI</span></div>
+    <p>Start with your problem statement from Day 1, then use AI to pressure-test and enrich your persona.</p>
+    <div class="ai-prompt"><strong>Prompt:</strong> "Based on this problem: [paste your problem statement], help me build a detailed customer persona. Include: demographics, daily frustrations, what they've already tried, where they spend time online, what language they use when describing this problem, and what would make them trust a new solution. Make it specific, not generic."</div>
+    <div class="ai-tools"><span class="ai-tool-tag">ChatGPT</span><span class="ai-tool-tag">Claude</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Customer Persona Canvas</span>
+    <h3>Build your ideal customer</h3>
+    <div class="field-row">
+      <div class="field-group"><label>Persona Name</label><input type="text" placeholder="Give them a real name"/></div>
+      <div class="field-group"><label>Age & Job Title</label><input type="text" placeholder="e.g. 34, Marketing Manager"/></div>
+    </div>
+    <div class="field-group"><label>A Day in Their Life</label><textarea placeholder="Walk through their typical day — where does the problem show up?"></textarea></div>
+    <div class="field-group"><label>Goals & Motivations</label><textarea placeholder="What do they want to achieve? What drives their decisions?"></textarea></div>
+    <div class="field-group"><label>Frustrations & Pain Points</label><textarea placeholder="What keeps them up at night? What workarounds have they tried?"></textarea></div>
+    <div class="field-group"><label>Where They Spend Time Online</label><input type="text" placeholder="Specific communities, platforms, newsletters, events"/></div>
+    <div class="field-group"><label>Quote That Captures Them</label><input type="text" placeholder="One sentence they'd actually say about this problem"/></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 2 · Competitive Analysis</span>
+    <h3>Know the alternatives — including "do nothing"</h3>
+    <table class="ws-table">
+      <thead><tr><th></th><th>Your Solution</th><th>Competitor A</th><th>Competitor B</th><th>Do Nothing</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Name</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td>—</td></tr>
+        <tr><td><strong>Price</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Key Strength</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Key Weakness</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Target User</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 3 · Channel Selection</span>
+    <h3>Where will you find your first customers?</h3>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-bottom:1rem">Don't pick every channel. Pick the one or two where your specific customer actually spends time. Focus beats fragmentation every time.</p>
+    <table class="ws-table">
+      <thead><tr><th>Channel</th><th>Best for</th><th>Your fit? (Why?)</th></tr></thead>
+      <tbody>
+        <tr><td>Instagram / TikTok</td><td>Visual products, lifestyle, B2C</td><td><input type="text"/></td></tr>
+        <tr><td>LinkedIn</td><td>B2B, professional services, consulting</td><td><input type="text"/></td></tr>
+        <tr><td>Twitter/X</td><td>Tech, media, startup community</td><td><input type="text"/></td></tr>
+        <tr><td>Email / Newsletter</td><td>Direct sales, high-intent audiences</td><td><input type="text"/></td></tr>
+        <tr><td>Reddit / Communities</td><td>Niche audiences, authentic discussion</td><td><input type="text"/></td></tr>
+        <tr><td>In-person / Events</td><td>Local business, high-trust sales</td><td><input type="text"/></td></tr>
+      </tbody>
+    </table>
+    <div class="field-row" style="margin-top:1rem">
+      <div class="field-group"><label>My Primary Channel</label><input type="text"/></div>
+      <div class="field-group"><label>My Secondary Channel</label><input type="text"/></div>
+    </div>
+    <div class="field-group"><label>Why these channels for your specific customer?</label><textarea placeholder="Connect the channel choice to your persona"></textarea></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 4 · Positioning Statement</span>
+    <h3>Complete this sentence</h3>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-bottom:1rem">This will feel forced at first. Do it anyway. Constraint is a creative tool.</p>
+    <div class="field-group"><label>For [your target customer]...</label><input type="text" placeholder="Be specific"/></div>
+    <div class="field-group"><label>Who [has this need or problem]...</label><input type="text"/></div>
+    <div class="field-group"><label>[Your business name] is a [category]...</label><input type="text"/></div>
+    <div class="field-group"><label>That [key benefit]...</label><input type="text"/></div>
+    <div class="field-group"><label>Unlike [competitor], we [key differentiator].</label><input type="text"/></div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 2</span>
+    <h4>The fear of talking to strangers</h4>
+    <p>Most founders avoid talking to potential customers because they're afraid of rejection — or worse, being told their idea is bad. But a "no" from a real customer today saves you six months of building the wrong thing. Every conversation, good or bad, is data. Go get it.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 2 Deliverables</div>
+    <ul>
+      <li>Customer Persona Canvas completed</li>
+      <li>Competitive Analysis Matrix filled in</li>
+      <li>Primary channel selected and account set up</li>
+      <li>Positioning Statement drafted</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 3 ═══ -->
+<div class="page" id="page-day3">
+  <div class="section-header">
+    <span class="eyebrow">Day 3</span>
+    <h1 class="page-title">Design Your Offer</h1>
+    <p class="page-intro">Now you know the problem and the customer. Today you decide what you'll actually sell — what to build first, what to cut, and how to package it into something people can buy. Simplicity is a design decision, not a compromise.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong></td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Product thinking, MVP, MoSCoW prioritisation</td></tr>
+      <tr><td>0:40</td><td><strong>Exercise 1</strong> — Product/Service Inventory (20 min)</td></tr>
+      <tr><td>1:00</td><td><strong>Exercise 2</strong> — MoSCoW Prioritisation (20 min)</td></tr>
+      <tr><td>1:20</td><td><strong>Exercise 3</strong> — Data Foundation Canvas (20 min)</td></tr>
+      <tr><td>1:40</td><td><strong>Exercise 4</strong> — 90-Day Roadmap (25 min)</td></tr>
+      <tr><td>2:05</td><td><strong>Share & Feedback</strong></td></tr>
+      <tr><td>2:30</td><td><strong>Wrap-Up</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Generate product variants and identify blind spots</span></div>
+    <p>Use AI to expand your product thinking and spot what you might be missing.</p>
+    <div class="ai-prompt"><strong>Prompt:</strong> "I'm launching a [type of business] for [target customer] that solves [problem]. Help me: 1) List 10 possible products or services I could offer, 2) Identify which 3 I should launch with first and why, 3) What's the simplest possible version I could deliver in 10 days, 4) What data will my business naturally generate that I should track from day one?"</div>
+    <div class="ai-tools"><span class="ai-tool-tag">ChatGPT</span><span class="ai-tool-tag">Claude</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Product / Service Inventory</span>
+    <h3>List everything you could potentially offer</h3>
+    <div class="field-group"><label>Core Products / Services (what generates most revenue)</label><textarea placeholder="List everything — no filtering yet"></textarea></div>
+    <div class="field-group"><label>Add-ons & Upgrades (premium versions, enhancements)</label><textarea></textarea></div>
+    <div class="field-group"><label>Packages & Bundles (subscriptions, multi-buys)</label><textarea></textarea></div>
+    <div class="field-group"><label>Future Expansion Ideas (don't build these yet)</label><textarea></textarea></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 2 · MoSCoW Prioritisation</span>
+    <h3>What gets built now, what waits?</h3>
+    <div class="moscow-grid">
+      <div class="moscow-cell must"><h4>Must Have — Launch Day</h4><textarea placeholder="Without these, you can't operate. Keep this list short."></textarea></div>
+      <div class="moscow-cell should"><h4>Should Have — First 30 Days</h4><textarea placeholder="Important but not critical for Day 1."></textarea></div>
+      <div class="moscow-cell could"><h4>Could Have — Month 2–3</h4><textarea placeholder="Nice to have. Add when proven demand exists."></textarea></div>
+      <div class="moscow-cell wont"><h4>Won't Have Yet — Future</h4><textarea placeholder="Good ideas for later. Write them down so you don't forget."></textarea></div>
+    </div>
+    <div class="field-group" style="margin-top:1rem"><label>MVP Summary: "On launch day, I will offer..."</label><textarea placeholder="Complete this sentence. Be specific."></textarea></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 3 · Data Foundation Canvas</span>
+    <h3>Design for AI from day one</h3>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-bottom:1rem">Most founders think about data too late. The businesses that use AI effectively later are the ones that captured the right data from the start. Spend 20 minutes now to save months later.</p>
+    <div class="data-canvas">
+      <div class="data-cell">
+        <h4>Customer Data</h4>
+        <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:0.5rem">What do you need to know about each customer?</p>
+        <textarea placeholder="e.g. name, email, purchase history, preferences, feedback..."></textarea>
+      </div>
+      <div class="data-cell">
+        <h4>Operational Data</h4>
+        <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:0.5rem">What happens inside your business you should track?</p>
+        <textarea placeholder="e.g. fulfillment time, costs per order, supplier performance..."></textarea>
+      </div>
+      <div class="data-cell">
+        <h4>AI Opportunity</h4>
+        <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:0.5rem">What could AI automate or improve once you have this data?</p>
+        <textarea placeholder="e.g. personalised recommendations, automated follow-ups, demand forecasting..."></textarea>
+      </div>
+    </div>
+    <div class="field-group" style="margin-top:1rem"><label>What simple tool will you use to capture this data from Day 1?</label><input type="text" placeholder="e.g. Airtable, Google Sheets, a CRM, Notion..."/></div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 3</span>
+    <h4>The perfectionism trap — version two</h4>
+    <p>Day 3 is when founders often try to define too much. They want a complete product line, a full roadmap, and a five-year plan before they've talked to 10 customers. Your MVP is not a broken version of your full product — it's a complete, focused version that tests your core assumption. Resist the urge to build everything.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 3 Deliverables</div>
+    <ul>
+      <li>Full product/service inventory listed</li>
+      <li>MoSCoW analysis completed</li>
+      <li>MVP statement written</li>
+      <li>Data Foundation Canvas completed</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 4 ═══ -->
+<div class="page" id="page-day4">
+  <div class="phase-banner">
+    <div class="phase-num">02</div>
+    <div class="phase-text">
+      <div class="phase-label">Phase 2 · Build</div>
+      <div class="phase-name">Days 4–7: Build the business case, shape your brand, make it official, go online.</div>
+      <div class="phase-desc">Discovery is over. Now you make it real.</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <span class="eyebrow">Day 4</span>
+    <h1 class="page-title">Create Business Case</h1>
+    <p class="page-intro">Today you build the financial and strategic foundation of your business: value proposition, pricing, unit economics, and a model that tells you whether this is viable — before you spend a day building it.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong></td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Value proposition design, pricing strategy</td></tr>
+      <tr><td>0:40</td><td><strong>Exercise 1</strong> — Value Proposition Canvas (25 min)</td></tr>
+      <tr><td>1:05</td><td><strong>Exercise 2</strong> — Pricing Simulation (20 min)</td></tr>
+      <tr><td>1:25</td><td><strong>Exercise 3</strong> — Back-of-Napkin Financial Model (25 min)</td></tr>
+      <tr><td>1:50</td><td><strong>Go / No-Go Decision</strong> (20 min)</td></tr>
+      <tr><td>2:10</td><td><strong>Share & Feedback</strong></td></tr>
+      <tr><td>2:30</td><td><strong>Wrap-Up</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Validate your pricing and find comparable benchmarks</span></div>
+    <div class="ai-prompt"><strong>Prompt:</strong> "I'm building [describe your business] for [target customer]. My planned price is [your price]. Help me: 1) Find comparable products/services and their pricing, 2) Assess whether my price is too low, too high, or well-positioned, 3) Suggest 3 pricing models I could use (e.g. one-time, subscription, tiered), 4) Write a value proposition statement that justifies this price to my customer."</div>
+    <div class="ai-tools"><span class="ai-tool-tag">ChatGPT</span><span class="ai-tool-tag">Claude</span><span class="ai-tool-tag">Perplexity</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Value Proposition Canvas</span>
+    <h3>Map your customer against your solution</h3>
+    <div class="field-row">
+      <div>
+        <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">CUSTOMER PROFILE</p>
+        <div class="field-group"><label>Jobs (what they're trying to do)</label><textarea style="min-height:60px"></textarea></div>
+        <div class="field-group"><label>Pains (frustrations and obstacles)</label><textarea style="min-height:60px"></textarea></div>
+        <div class="field-group"><label>Gains (desired outcomes)</label><textarea style="min-height:60px"></textarea></div>
+      </div>
+      <div>
+        <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">YOUR VALUE MAP</p>
+        <div class="field-group"><label>Products & Services (what you offer)</label><textarea style="min-height:60px"></textarea></div>
+        <div class="field-group"><label>Pain Relievers (how you solve their problems)</label><textarea style="min-height:60px"></textarea></div>
+        <div class="field-group"><label>Gain Creators (how you create value)</label><textarea style="min-height:60px"></textarea></div>
+      </div>
+    </div>
+    <div class="field-group"><label>One-Liner Value Proposition: "[Product] helps [customer] to [benefit] by [how]."</label><input type="text"/></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 2 · Pricing Simulation</span>
+    <h3>Test 3 scenarios — revenue isn't the goal, profit is</h3>
+    <table class="ws-table">
+      <thead><tr><th>Scenario</th><th>Price</th><th>Est. Monthly Units</th><th>Revenue</th><th>Variable Cost</th><th>Contribution</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Budget</strong> (low price, high volume)</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Standard</strong> (market rate)</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Premium</strong> (high price, low volume)</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+      </tbody>
+    </table>
+    <div class="field-row" style="margin-top:1rem">
+      <div class="field-group"><label>Chosen Pricing Strategy</label><input type="text"/></div>
+      <div class="field-group"><label>Why this price?</label><input type="text"/></div>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 3 · Back-of-Napkin Financial Model</span>
+    <h3>5 inputs. 3 outputs. Is this viable?</h3>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-bottom:1rem">Keep it simple. You're not building a spreadsheet — you're answering: "Can I make money doing this?"</p>
+    <div class="field-row-3">
+      <div class="field-group"><label>Price per Unit / Customer ($)</label><input type="number"/></div>
+      <div class="field-group"><label>Variable Cost per Unit ($)</label><input type="number"/></div>
+      <div class="field-group"><label>Monthly Fixed Costs ($)</label><input type="number"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Estimated Monthly Customers (Month 1)</label><input type="number"/></div>
+      <div class="field-group"><label>Estimated Monthly Customers (Month 6)</label><input type="number"/></div>
+    </div>
+    <div style="background:var(--off-white);border:1px solid var(--rule);padding:1rem;margin-top:0.75rem">
+      <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">Your Outputs</p>
+      <div class="field-row-3">
+        <div class="field-group"><label>Contribution Margin per Unit ($)</label><input type="text" placeholder="Price minus variable cost"/></div>
+        <div class="field-group"><label>Break-Even Units per Month</label><input type="text" placeholder="Fixed costs ÷ contribution"/></div>
+        <div class="field-group"><label>Estimated Break-Even Month</label><input type="text" placeholder="When do you turn profitable?"/></div>
+      </div>
+    </div>
+    <div class="field-group" style="margin-top:1rem"><label>Personal runway: how many months can you operate before you need revenue?</label><input type="text" placeholder="Be honest. This protects you."/></div>
+  </div>
+
+  <div class="decision-box">
+    <div>
+      <strong>Go / No-Go Decision</strong>
+      <p>Score each factor 1–5. 25–30 = Strong Go. 18–24 = Cautious Go. Under 18 = Revisit your assumptions.</p>
+      <table class="ws-table" style="margin-top:0.75rem;background:rgba(255,255,255,0.05)">
+        <thead><tr><th style="color:rgba(255,255,255,0.4)">Factor</th><th style="color:rgba(255,255,255,0.4)">Score (1–5)</th></tr></thead>
+        <tbody>
+          <tr><td style="color:rgba(255,255,255,0.6)">Problem validated by 3+ real conversations</td><td><input type="number" min="1" max="5" style="background:transparent;color:white;border-color:rgba(255,255,255,0.2)"/></td></tr>
+          <tr><td style="color:rgba(255,255,255,0.6)">People would pay for a solution</td><td><input type="number" min="1" max="5" style="background:transparent;color:white;border-color:rgba(255,255,255,0.2)"/></td></tr>
+          <tr><td style="color:rgba(255,255,255,0.6)">Market is large enough</td><td><input type="number" min="1" max="5" style="background:transparent;color:white;border-color:rgba(255,255,255,0.2)"/></td></tr>
+          <tr><td style="color:rgba(255,255,255,0.6)">Unit economics work</td><td><input type="number" min="1" max="5" style="background:transparent;color:white;border-color:rgba(255,255,255,0.2)"/></td></tr>
+          <tr><td style="color:rgba(255,255,255,0.6)">You're excited to work on this for 2+ years</td><td><input type="number" min="1" max="5" style="background:transparent;color:white;border-color:rgba(255,255,255,0.2)"/></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="decision-score">
+      <span class="score-num">__</span>
+      <span class="score-label">/ 25</span>
+    </div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 4</span>
+    <h4>Talking about money feels uncomfortable. Do it anyway.</h4>
+    <p>Most first-time founders underprice because they're afraid to ask for real money. Remember: a low price doesn't reduce rejection risk — it just reduces your margin. Price based on the value you deliver, not on your discomfort with asking.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 4 Deliverables</div>
+    <ul>
+      <li>Value Proposition Canvas completed</li>
+      <li>Pricing simulation run — strategy chosen</li>
+      <li>Back-of-napkin financial model completed</li>
+      <li>Go/No-Go decision made</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 5 ═══ -->
+<div class="page" id="page-day5">
+  <div class="section-header">
+    <span class="eyebrow">Day 5</span>
+    <h1 class="page-title">Shape Your Brand</h1>
+    <p class="page-intro">Your business needs a face before it has a product. Today you define how you'll look, sound, and be remembered — and build the first version of your brand fast enough for early customers to see it.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong></td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Customer journey, conversion, prototyping principles</td></tr>
+      <tr><td>0:40</td><td><strong>Exercise 1</strong> — Customer Journey Map (25 min)</td></tr>
+      <tr><td>1:05</td><td><strong>Exercise 2</strong> — AI Prototype Generation (45 min)</td></tr>
+      <tr><td>1:50</td><td><strong>Prototype Gallery</strong> — Share and get feedback</td></tr>
+      <tr><td>2:20</td><td><strong>Wrap-Up</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Generate your first visual prototype</span></div>
+    <p>Use AI image tools to visualise your business before you build it. The goal isn't perfection — it's tangibility.</p>
+    <div class="ai-prompt"><strong>For landing page copy (Claude/ChatGPT):</strong> "Write a landing page for [your business]. Include: a 6-word headline, a 15-word subheadline, 3 benefit statements, a 'how it works' section in 3 steps, and a call-to-action button. Customer is [your persona]. Tone: [confident/warm/professional]."<br/><br/><strong>For visuals (Midjourney/DALL-E):</strong> "Product mockup for a [product type] brand called [name]. Style: [minimal/bold/organic]. Color palette: [describe]. Clean white background, professional photography style."</div>
+    <div class="ai-tools"><span class="ai-tool-tag">v0.dev</span><span class="ai-tool-tag">Framer AI</span><span class="ai-tool-tag">Midjourney</span><span class="ai-tool-tag">DALL-E</span><span class="ai-tool-tag">Claude</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Customer Journey Map</span>
+    <h3>From stranger to paying customer</h3>
+    <table class="ws-table">
+      <thead><tr><th>Stage</th><th>What they do</th><th>Your touchpoint</th><th>Their emotion</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Awareness</strong></td><td><input type="text" placeholder="How do they discover the problem?"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Consideration</strong></td><td><input type="text" placeholder="How do they research solutions?"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Decision</strong></td><td><input type="text" placeholder="What tips them to buy?"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Purchase</strong></td><td><input type="text" placeholder="The buying moment"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>First Use</strong></td><td><input type="text" placeholder="What's their first experience?"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Advocacy</strong></td><td><input type="text" placeholder="When do they tell others?"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+      </tbody>
+    </table>
+    <div class="field-group" style="margin-top:1rem"><label>Biggest drop-off risk (where do customers most likely quit?)</label><input type="text"/></div>
+    <div class="field-group"><label>What's the first "win" your customer experiences?</label><input type="text" placeholder="The moment they feel it was worth it"/></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 2 · Prototype Notes</span>
+    <h3>Document what you built</h3>
+    <div class="field-group"><label>Tool Used</label><input type="text"/></div>
+    <div class="field-group"><label>AI Prompt Used (paste it here)</label><textarea></textarea></div>
+    <div class="field-group"><label>Key screens / assets created</label><textarea placeholder="List what you generated — landing page, product mockup, logo concept..."></textarea></div>
+    <div class="field-group"><label>Feedback from the gallery session</label><textarea placeholder="What did cohort members say? What surprised you?"></textarea></div>
+    <div class="field-group"><label>What would you change based on feedback?</label><textarea></textarea></div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 5</span>
+    <h4>The vulnerability of showing early work</h4>
+    <p>Today you'll show an unfinished, imperfect version of your business to a room of people. It might feel embarrassing. It's not. The people in this room are rooting for you — and their honest feedback at this stage will save you weeks of building in the wrong direction. Show it anyway.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 5 Deliverables</div>
+    <ul>
+      <li>Customer Journey Map completed</li>
+      <li>AI prototype or mockup generated</li>
+      <li>Gallery feedback received and documented</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 6 ═══ -->
+<div class="page" id="page-day6">
+  <div class="section-header">
+    <span class="eyebrow">Day 6</span>
+    <h1 class="page-title">Make It Official</h1>
+    <p class="page-intro">You're building something real. Today you make it legal — register your business and set up the tools you need to operate. Don't over-engineer it. Start simple and upgrade when you need to.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong></td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Legal structures, entity types, common mistakes</td></tr>
+      <tr><td>0:40</td><td><strong>Exercise 1</strong> — Entity Decision (15 min)</td></tr>
+      <tr><td>0:55</td><td><strong>Exercise 2</strong> — Business Setup Checklist (60 min live work)</td></tr>
+      <tr><td>1:55</td><td><strong>Exercise 3</strong> — Legal Documents with AI (20 min)</td></tr>
+      <tr><td>2:15</td><td><strong>Share & Feedback</strong></td></tr>
+      <tr><td>2:35</td><td><strong>Wrap-Up</strong> — Homework: Complete registration if not done</td></tr>
+    </tbody>
+  </table>
+
+  <div class="framework">
+    <span class="framework-label">US Entity Types — Choose Your Structure</span>
+    <table class="ws-table" style="margin-top:0.75rem">
+      <thead><tr><th>Entity</th><th>Best For</th><th>Cost (US)</th><th>Liability Protection</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sole Proprietor</strong></td><td>Testing ideas, freelancing, very low risk</td><td>$0–100</td><td>None — you are the business</td></tr>
+        <tr><td><strong>LLC</strong></td><td>Most startups — best balance for early stage</td><td>$50–500</td><td>Yes (with limits)</td></tr>
+        <tr><td><strong>S-Corp</strong></td><td>Profitable solo businesses — tax efficiency</td><td>$100–600</td><td>Yes</td></tr>
+        <tr><td><strong>C-Corp (Delaware)</strong></td><td>Planning to raise VC, issue equity</td><td>$500–1,000+</td><td>Strongest</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.78rem;color:var(--text-faint);margin-top:0.75rem;font-style:italic">This is general information, not legal advice. Consult an attorney or CPA for your specific situation.</p>
+  </div>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Draft your legal documents with AI</span></div>
+    <p>Use AI to generate first drafts of your Terms of Service, Privacy Policy, and Refund Policy. Always review with a lawyer before publishing — but AI gets you 80% of the way for free.</p>
+    <div class="ai-prompt"><strong>Prompt:</strong> "Write a [Terms of Service / Privacy Policy / Refund Policy] for a US-based [type of business] called [name]. We [describe what you sell]. Customers [describe how they buy]. Our refund policy is [describe]. Keep it plain English, under 500 words, legally sound for a small business."</div>
+    <div class="ai-tools"><span class="ai-tool-tag">Claude</span><span class="ai-tool-tag">ChatGPT</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Entity Decision</span>
+    <h3>Which structure is right for you right now?</h3>
+    <div class="field-row">
+      <div class="field-group"><label>Entity Type Chosen</label><input type="text" placeholder="LLC / Sole Prop / C-Corp"/></div>
+      <div class="field-group"><label>State of Registration</label><input type="text" placeholder="Your home state or Delaware"/></div>
+    </div>
+    <div class="field-group"><label>Why this entity type for your situation?</label><textarea></textarea></div>
+    <div class="field-group"><label>Do you have a co-founder? If yes — have you discussed equity split?</label><input type="text" placeholder="Yes/No. If yes, note the split."/></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 2 · Business Setup Checklist</span>
+    <h3>Complete as many of these as possible today</h3>
+    <ul class="checklist">
+      <li><input type="checkbox"/> Business name chosen and verified (no trademark conflicts)</li>
+      <li><input type="checkbox"/> Domain purchased (aim for .com, under 15 characters)</li>
+      <li><input type="checkbox"/> Business email created (Google Workspace or similar)</li>
+      <li><input type="checkbox"/> Entity registration started or completed</li>
+      <li><input type="checkbox"/> Business bank account opened (Mercury, Relay, or local bank)</li>
+      <li><input type="checkbox"/> Payment processor set up (Stripe recommended)</li>
+      <li><input type="checkbox"/> EIN obtained (free at IRS.gov — takes 5 minutes online)</li>
+      <li><input type="checkbox"/> Separate business and personal finances from this day forward</li>
+    </ul>
+    <div class="field-row" style="margin-top:1rem">
+      <div class="field-group"><label>Business Name</label><input type="text"/></div>
+      <div class="field-group"><label>Domain Purchased</label><input type="text"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Business Email</label><input type="text"/></div>
+      <div class="field-group"><label>Payment Processor</label><input type="text" placeholder="Stripe / Square / Other"/></div>
+    </div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 6</span>
+    <h4>The commitment moment</h4>
+    <p>Registering a business makes it real in a way that ideas never do. You might feel a strange mix of excitement and dread — that's completely normal. It means you're taking this seriously. The founders who succeed aren't the ones who never felt scared. They're the ones who registered the LLC anyway.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 6 Deliverables</div>
+    <ul>
+      <li>Entity type decided and registration started</li>
+      <li>Domain purchased, business email created</li>
+      <li>Payment processor set up</li>
+      <li>Legal document drafts generated with AI</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 7 ═══ -->
+<div class="page" id="page-day7">
+  <div class="section-header">
+    <span class="eyebrow">Day 7</span>
+    <h1 class="page-title">Build Your Online Presence</h1>
+    <p class="page-intro">Today you build your website with the help of AI. It doesn't need to be perfect — it needs to be live, clear, and make it possible for someone to take action. Everything else can be improved after your first customer.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong></td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Landing page anatomy, conversion principles</td></tr>
+      <tr><td>0:40</td><td><strong>Content Prep</strong> — Write your page copy (30 min)</td></tr>
+      <tr><td>1:10</td><td><strong>Live Build</strong> — Build your website (75 min)</td></tr>
+      <tr><td>2:25</td><td><strong>Beta Testing</strong> — Swap with a partner, 5-minute test</td></tr>
+      <tr><td>2:45</td><td><strong>Celebrate</strong> — Share your live URLs</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Generate your full page copy in under 10 minutes</span></div>
+    <p>Write all your website copy before touching your website builder. AI will cut this from 2 hours to 20 minutes.</p>
+    <div class="ai-prompt"><strong>Prompt:</strong> "Write complete landing page copy for [business name], a [type of business] that helps [target customer] to [key benefit]. Include: 1) A 6-word headline, 2) A 20-word subheadline, 3) Three benefit statements (headline + 2 sentences each), 4) A 'How It Works' section in 3 numbered steps, 5) One social proof statement, 6) A FAQ with 4 questions and answers, 7) A closing CTA section. Tone: [direct/warm/professional]. Avoid buzzwords."</div>
+    <div class="ai-tools"><span class="ai-tool-tag">Claude</span><span class="ai-tool-tag">ChatGPT</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Content Prep · Write Before You Build</span>
+    <h3>Your page copy</h3>
+    <div class="field-group"><label>Headline (6–10 words)</label><input type="text" placeholder="What you do + for whom. No jargon."/></div>
+    <div class="field-group"><label>Subheadline (15–25 words)</label><input type="text" placeholder="Key benefit or how it works"/></div>
+    <div class="field-group"><label>Benefit 1</label><input type="text"/></div>
+    <div class="field-group"><label>Benefit 2</label><input type="text"/></div>
+    <div class="field-group"><label>Benefit 3</label><input type="text"/></div>
+    <div class="field-group"><label>How It Works — Step 1</label><input type="text"/></div>
+    <div class="field-group"><label>How It Works — Step 2</label><input type="text"/></div>
+    <div class="field-group"><label>How It Works — Step 3</label><input type="text"/></div>
+    <div class="field-group"><label>Primary CTA (button text)</label><input type="text" placeholder="e.g. Get Early Access, Start Free, Book a Call"/></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Build & Launch</span>
+    <h3>Platform, domain, live</h3>
+    <div class="field-row">
+      <div class="field-group"><label>Website Platform Chosen</label><input type="text" placeholder="Framer / Webflow / Squarespace / Carrd / Other"/></div>
+      <div class="field-group"><label>Domain Connected</label><input type="text" placeholder="yourbusiness.com"/></div>
+    </div>
+    <ul class="checklist" style="margin-top:1rem">
+      <li><input type="checkbox"/> All copy written and loaded</li>
+      <li><input type="checkbox"/> Domain connected and SSL enabled</li>
+      <li><input type="checkbox"/> Contact form or email capture working</li>
+      <li><input type="checkbox"/> Tested on mobile</li>
+      <li><input type="checkbox"/> Partner review completed, feedback noted</li>
+      <li><input type="checkbox"/> Site is LIVE</li>
+    </ul>
+    <div class="field-group" style="margin-top:1rem"><label>🚀 My Live Website URL</label><input type="text" placeholder="Paste your URL here"/></div>
+    <div class="field-group"><label>Partner feedback — one thing to fix</label><input type="text"/></div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 7</span>
+    <h4>Shipping before you're ready</h4>
+    <p>Your website will not be perfect today. It doesn't need to be. Every successful company has a version of their first website they're embarrassed by. What matters is that it's live, it clearly explains what you do, and it makes it possible for someone to take action. That's enough.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 7 Deliverables</div>
+    <ul>
+      <li>Website copy written (with AI assist)</li>
+      <li>Website live at custom domain</li>
+      <li>Mobile-tested and partner-reviewed</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 8 ═══ -->
+<div class="page" id="page-day8">
+  <div class="phase-banner">
+    <div class="phase-num">03</div>
+    <div class="phase-text">
+      <div class="phase-label">Phase 3 · Launch</div>
+      <div class="phase-name">Days 8–10: Tell the world, get customers, launch publicly.</div>
+      <div class="phase-desc">You've built it. Now you have to sell it.</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <span class="eyebrow">Day 8</span>
+    <h1 class="page-title">Design Your Brand</h1>
+    <p class="page-intro">Your brand is live. Now you give it a voice and a presence. Today you set up your social media, build your email foundation, and create the launch content that will carry your business into the world.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong> — Website URLs, first impressions</td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Storytelling, content strategy, founder narrative</td></tr>
+      <tr><td>0:40</td><td><strong>Exercise 1</strong> — Founder Story (20 min)</td></tr>
+      <tr><td>1:00</td><td><strong>Exercise 2</strong> — Launch Content Pack (40 min)</td></tr>
+      <tr><td>1:40</td><td><strong>Exercise 3</strong> — Email to Network (15 min)</td></tr>
+      <tr><td>1:55</td><td><strong>Share & Feedback</strong> — Read announcements aloud</td></tr>
+      <tr><td>2:20</td><td><strong>Wrap-Up</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Generate your founder story and launch content</span></div>
+    <div class="ai-prompt"><strong>Founder story prompt:</strong> "Help me write a 200-word founder story for my business [name]. Here are the raw facts: [paste your Day 1 mindset reflection and problem statement]. Format: 1) The problem I experienced, 2) The moment I decided to act, 3) What I built and for whom, 4) What I want to change. Tone: honest, human, no corporate speak."<br/><br/><strong>Launch post prompt:</strong> "Write 3 launch posts for [platform]. Business: [name]. What it does: [one sentence]. Customer: [persona]. Tone: [describe]. Each post should have a different angle: 1) the problem story, 2) behind the scenes, 3) the offer with CTA. Under 280 characters each for Twitter, longer for LinkedIn."</div>
+    <div class="ai-tools"><span class="ai-tool-tag">Claude</span><span class="ai-tool-tag">ChatGPT</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Your Founder Story</span>
+    <h3>150–200 words. Honest. Human.</h3>
+    <div class="field-group"><label>The Problem I Experienced or Observed</label><textarea></textarea></div>
+    <div class="field-group"><label>The Moment I Decided to Act</label><textarea></textarea></div>
+    <div class="field-group"><label>What I Built and For Whom</label><textarea></textarea></div>
+    <div class="field-group"><label>What I Want to Change (your mission)</label><textarea></textarea></div>
+    <div class="field-group"><label>Full Founder Story (combined, 150–200 words)</label><textarea style="min-height:140px" placeholder="Paste your AI-assisted draft here, then edit in your own voice"></textarea></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 2 · Launch Content Pack</span>
+    <h3>Three posts, ready to go</h3>
+    <div class="field-group"><label>Post 1 — Launch Announcement (hook + what + CTA)</label><textarea></textarea></div>
+    <div class="field-group"><label>Post 2 — Founder Story / Behind the Scenes</label><textarea></textarea></div>
+    <div class="field-group"><label>Post 3 — The Problem + Your Solution</label><textarea></textarea></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 3 · Email to Your Network</span>
+    <h3>The most underused launch tool</h3>
+    <div class="field-group"><label>Subject Line</label><input type="text" placeholder="Personal, specific, not salesy"/></div>
+    <div class="field-group"><label>Email Body (150–200 words max)</label><textarea style="min-height:160px" placeholder="Start with their name. Tell the story. Make one clear ask."></textarea></div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 8</span>
+    <h4>Putting yourself out there</h4>
+    <p>Posting about your business publicly for the first time feels enormous. It isn't. Most people will scroll past. A few will stop and care — and those are your people. The discomfort of being seen is temporary. The regret of staying invisible is permanent.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 8 Deliverables</div>
+    <ul>
+      <li>Founder story written and polished</li>
+      <li>3 launch posts drafted and ready</li>
+      <li>Email to network written and ready to send</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 9 ═══ -->
+<div class="page" id="page-day9">
+  <div class="section-header">
+    <span class="eyebrow">Day 9</span>
+    <h1 class="page-title">Get Your First Sale</h1>
+    <p class="page-intro">Today you do the thing most people never do: ask a real person for real money in exchange for something you created. Start selling, learn from the real feedback you get, and adjust before going bigger.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong></td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — First customer acquisition, the permission-less sale</td></tr>
+      <tr><td>0:40</td><td><strong>Exercise 1</strong> — Build your outreach list (15 min)</td></tr>
+      <tr><td>0:55</td><td><strong>Exercise 2</strong> — Write message templates (15 min)</td></tr>
+      <tr><td>1:10</td><td><strong>LIVE OUTREACH</strong> — Send 20 messages right now (50 min)</td></tr>
+      <tr><td>2:00</td><td><strong>Share & Celebrate</strong> — First responses</td></tr>
+      <tr><td>2:20</td><td><strong>Wrap-Up</strong> — Homework: Follow up tomorrow</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ai-box">
+    <div class="ai-box-header"><span class="ai-badge">AI in This Session</span><span class="ai-box-title">Write personalised outreach messages at scale</span></div>
+    <div class="ai-prompt"><strong>Prompt:</strong> "Write 5 variations of a short outreach message for my business [name]. The message should: feel personal (not templated), mention a specific problem the person might have, briefly describe what I'm offering, and make one simple ask (a conversation, not a sale). Keep each under 100 words. Tone: warm but direct. Business: [describe]. Customer: [persona]."</div>
+    <div class="ai-tools"><span class="ai-tool-tag">Claude</span><span class="ai-tool-tag">ChatGPT</span></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Exercise 1 · Outreach List</span>
+    <h3>20 people. By tier.</h3>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-bottom:1rem">Tier 1: friends and colleagues who fit your persona. Tier 2: second-degree connections. Tier 3: warm strangers who've engaged with your content.</p>
+    <table class="ws-table">
+      <thead><tr><th>Name</th><th>Tier</th><th>Why them?</th><th>Sent?</th><th>Response</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><input type="text"/></td><td><input type="text" style="width:50px"/></td><td><input type="text"/></td><td><input type="checkbox"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Day 9 Summary</span>
+    <h3>End of day numbers</h3>
+    <div class="field-row-3">
+      <div class="field-group"><label>Messages Sent</label><input type="number"/></div>
+      <div class="field-group"><label>Responses</label><input type="number"/></div>
+      <div class="field-group"><label>First Customers / Users</label><input type="number"/></div>
+    </div>
+    <div class="field-group"><label>Key learnings from today's conversations</label><textarea></textarea></div>
+    <div class="field-group"><label>What surprised you?</label><textarea></textarea></div>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 9</span>
+    <h4>Rejection and resilience</h4>
+    <p>You will hear "no" today, or just silence. That's not failure — that's data. Every "no" tells you something: wrong audience, wrong message, wrong timing, or wrong offer. The founders who build great businesses aren't the ones who never got rejected. They're the ones who treated every "no" as a question to answer, not a verdict to accept.</p>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Community Note</span>
+    <h4>Share your first "yes" in the group channel</h4>
+    <p>When you get your first positive response — even if it's just interest, not a sale — share it with the cohort. Your momentum is contagious. Celebrating each other's small wins is what keeps everyone going on the hard days.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 9 Deliverables</div>
+    <ul>
+      <li>20+ personalised messages sent</li>
+      <li>At least 5 responses received</li>
+      <li>At least 1 customer or user acquired</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DAY 10 ═══ -->
+<div class="page" id="page-day10">
+  <div class="section-header">
+    <span class="eyebrow">Day 10</span>
+    <h1 class="page-title">Go Public</h1>
+    <p class="page-intro">This is not a finish line — it's the start of the real work. Today you launch publicly, consolidate everything you've built, and set up for what comes next: growing from your own revenue, or bringing in investment if that's the path.</p>
+  </div>
+
+  <table class="agenda">
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+    <tbody>
+      <tr><td>0:00</td><td><strong>Check-In</strong> — Day 9 results, first customer stories</td></tr>
+      <tr><td>0:10</td><td><strong>Theory</strong> — Launch execution, product-market fit, what comes next</td></tr>
+      <tr><td>0:40</td><td><strong>LAUNCH</strong> — Post everywhere, send email (45 min)</td></tr>
+      <tr><td>1:25</td><td><strong>2-Minute Pitch Workshop</strong> (40 min)</td></tr>
+      <tr><td>2:05</td><td><strong>KPI Dashboard Setup</strong> (15 min)</td></tr>
+      <tr><td>2:20</td><td><strong>Pitch Presentations</strong> — Volunteers share</td></tr>
+      <tr><td>2:40</td><td><strong>Celebration & 30/60/90 Plan</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="workspace">
+    <span class="workspace-label">Launch Execution Checklist</span>
+    <h3>Do this right now, in the session</h3>
+    <ul class="checklist">
+      <li><input type="checkbox"/> Posted to primary channel</li>
+      <li><input type="checkbox"/> Posted to secondary channel</li>
+      <li><input type="checkbox"/> Email sent to personal network</li>
+      <li><input type="checkbox"/> Responded to all comments within first hour</li>
+      <li><input type="checkbox"/> Supported at least 2 cohort members' launches</li>
+    </ul>
+    <div class="field-row-3" style="margin-top:1rem">
+      <div class="field-group"><label>Website Visits (Day 10)</label><input type="number"/></div>
+      <div class="field-group"><label>Email Signups</label><input type="number"/></div>
+      <div class="field-group"><label>First Customers Today</label><input type="number"/></div>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Your 2-Minute Pitch</span>
+    <h3>Know this by heart before you leave today</h3>
+    <div class="field-group"><label>Hook (10 sec) — a striking fact or question about the problem</label><input type="text"/></div>
+    <div class="field-group"><label>Problem (20 sec) — who struggles with what, and what it costs them</label><textarea style="min-height:60px"></textarea></div>
+    <div class="field-group"><label>Solution (20 sec) — what you've built and how it works</label><textarea style="min-height:60px"></textarea></div>
+    <div class="field-group"><label>Traction (20 sec) — what you've already done: customers, feedback, signups</label><input type="text"/></div>
+    <div class="field-group"><label>Vision (20 sec) — where this is going</label><input type="text"/></div>
+    <div class="field-group"><label>Ask (10 sec) — one clear, specific ask</label><input type="text" placeholder="e.g. I'm looking for 5 more beta customers. Are you interested?"/></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Your 30 / 60 / 90 Day Roadmap</span>
+    <h3>What comes after Day 10</h3>
+    <div class="field-group"><label>Days 11–30: Learn and Stabilise — what will you focus on?</label><textarea placeholder="Talk to every customer. Fix critical issues. Aim for 10 paying customers."></textarea></div>
+    <div class="field-group"><label>Days 31–60: Optimise and Grow — what will you double down on?</label><textarea placeholder="Find repeatable acquisition. Improve onboarding. Get 30+ customers."></textarea></div>
+    <div class="field-group"><label>Days 61–90: Scale or Pivot — what does success look like?</label><textarea placeholder="Run your PMF test. Build on what's working or make strategic changes."></textarea></div>
+  </div>
+
+  <div class="workspace">
+    <span class="workspace-label">Weekly KPI Dashboard — Set This Up Today</span>
+    <h3>What you measure, you manage</h3>
+    <table class="ws-table">
+      <thead><tr><th>Metric</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Revenue ($)</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>New Customers</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Website Visitors</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Conversion Rate</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Biggest Win</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+        <tr><td><strong>Next Week Focus</strong></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mindset-box">
+    <span class="mindset-badge">Founder Mindset · Day 10</span>
+    <h4>What comes after the launch high</h4>
+    <p>Launch day feels electric. Day 11 often feels flat. That's completely normal and completely expected. The adrenaline of launching fades — what replaces it is the quiet discipline of showing up for your customers every day. The sprint gave you momentum. It's yours to keep or lose. Keep going.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-label">✓ Day 10 Deliverables</div>
+    <ul>
+      <li>Public launch executed across all channels</li>
+      <li>2-minute pitch written and practised</li>
+      <li>30/60/90 roadmap drafted</li>
+      <li>Weekly KPI dashboard set up</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ COMPLETION ═══ -->
+<div class="page" id="page-completion">
+  <div class="completion-hero">
+    <h1>You did it.</h1>
+    <p>You just did in 10 working days what most people talk about for 10 years. You didn't just plan a business — you started one. You talked to real people, built something real, and asked for real money. You are a founder now.</p>
+  </div>
+
+  <div class="completion-checklist">
+    <div class="completion-phase">
+      <h3>Phase 1 · Discovery</h3>
+      <ul>
+        <li>Validated problem statement</li>
+        <li>Customer persona</li>
+        <li>Competitive positioning</li>
+        <li>Positioning statement</li>
+        <li>Data Foundation Canvas</li>
+      </ul>
+    </div>
+    <div class="completion-phase">
+      <h3>Phase 2 · Build</h3>
+      <ul>
+        <li>Value Proposition Canvas</li>
+        <li>Pricing strategy confirmed</li>
+        <li>Financial model completed</li>
+        <li>Legal entity registered</li>
+        <li>Live website at custom domain</li>
+      </ul>
+    </div>
+    <div class="completion-phase">
+      <h3>Phase 3 · Launch</h3>
+      <ul>
+        <li>Founder story written</li>
+        <li>Launch content created</li>
+        <li>First customers acquired</li>
+        <li>Public launch executed</li>
+        <li>2-minute pitch recorded</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"You started with an idea. Now you have a business. What happens next is up to you — but you've proven you can ship. Never forget that."</p>
+  </div>
+
+  <div class="community-box">
+    <div>
+      <h3>Stay in the cohort community.</h3>
+      <p>The sprint is over. The community isn't. Share your weekly wins, ask questions, and support the founders in your cohort. The people in that room are your first network.</p>
+    </div>
+    <a href="#" class="btn-community">Open Community</a>
+  </div>
+
+  <div class="workspace" style="margin-top:2rem">
+    <span class="workspace-label">Final Reflection</span>
+    <h3>Before you close this workbook</h3>
+    <div class="field-group"><label>The moment I'm most proud of from this sprint</label><textarea></textarea></div>
+    <div class="field-group"><label>The biggest thing I learned about myself as a founder</label><textarea></textarea></div>
+    <div class="field-group"><label>What I'm committing to in the next 30 days</label><textarea></textarea></div>
+    <div class="field-group"><label>One person I want to thank from this cohort</label><input type="text"/></div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const pages=[
+    {id:'cover',day:'Getting Started',title:'Business Launch Sprint Workbook'},
+    {id:'format',day:'Getting Started',title:'Session Format'},
+    {id:'mindset-primer',day:'Getting Started',title:'The Founder Mindset'},
+    {id:'day1',day:'Day 1',title:'Validate Your Idea'},
+    {id:'day2',day:'Day 2',title:'Know Your Customer'},
+    {id:'day3',day:'Day 3',title:'Design Your Offer'},
+    {id:'day4',day:'Day 4',title:'Create Business Case'},
+    {id:'day5',day:'Day 5',title:'Shape Your Brand'},
+    {id:'day6',day:'Day 6',title:'Make It Official'},
+    {id:'day7',day:'Day 7',title:'Build Your Online Presence'},
+    {id:'day8',day:'Day 8',title:'Design Your Brand'},
+    {id:'day9',day:'Day 9',title:'Get Your First Sale'},
+    {id:'day10',day:'Day 10',title:'Go Public'},
+    {id:'completion',day:'Complete',title:'Sprint Complete'}
+  ];
+  let current=0;
+
+  window.showPage = function(id){
+    const idx=pages.findIndex(p=>p.id===id);
+    if(idx<0)return;
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-'+id).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n=>{if(n.getAttribute('onclick')&&n.getAttribute('onclick').includes("'"+id+"'"))n.classList.add('active')});
+    document.getElementById('topbarDay').textContent=pages[idx].day;
+    document.getElementById('topbarTitle').textContent=pages[idx].title;
+    current=idx;
+    updateProgress();
+    window.scrollTo(0,0);
+  };
+
+  window.nextPage = function(){if(current<pages.length-1)showPage(pages[current+1].id)};
+  window.prevPage = function(){if(current>0)showPage(pages[current-1].id)};
+
+  function updateProgress(){
+    const pct=Math.round((current/(pages.length-1))*100);
+    document.getElementById('progressFill').style.width=pct+'%';
+    document.getElementById('progressPct').textContent=pct+'% Complete';
+  }
+
+  updateProgress();
+});
+// ── PRINT HINTS: insert placeholder text as description BETWEEN label and field ──
+document.querySelectorAll('.field-group input[placeholder], .field-group textarea[placeholder]').forEach(function(el){
+  if(el.dataset.hintAdded) return;
+  var text = el.getAttribute('placeholder');
+  if(!text || text.trim()==='') return;
+  el.dataset.hintAdded = '1';
+  var hint = document.createElement('span');
+  hint.className = 'field-hint';
+  hint.textContent = text;
+  el.parentNode.insertBefore(hint, el);
+});
+</script>
+</body>
+</html>
